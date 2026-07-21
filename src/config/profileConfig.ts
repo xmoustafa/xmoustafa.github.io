@@ -2,7 +2,7 @@ import type { ProfileConfig } from "../types/config";
 
 // 个人资料配置
 export const profileConfig: ProfileConfig = {
-	avatar: "/assets/images/prosox-avatar.png", // Relative to /public because the path begins with '/'.
+	avatar: "/assets/images/prosox-avatar.webp", // Relative to /public because the path begins with '/'.
 	name: "Prosox0x0",
 	bio: "Penetration Tester · Security Researcher",
 	typewriter: {

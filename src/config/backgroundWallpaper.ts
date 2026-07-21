@@ -3,8 +3,8 @@ import type { FullscreenWallpaperConfig } from "../types/config";
 export const fullscreenWallpaperConfig: FullscreenWallpaperConfig = {
 	enable: false,
 	src: {
-		desktop: ["/assets/images/prosox-banner.png"],
-		mobile: ["/assets/images/prosox-banner.png"],
+		desktop: ["/assets/images/prosox-banner.webp"],
+		mobile: ["/assets/images/prosox-banner.webp"],
 	},
 	position: "center",
 	carousel: {

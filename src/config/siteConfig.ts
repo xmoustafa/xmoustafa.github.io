@@ -35,9 +35,9 @@ export const siteConfig: SiteConfig = {
 		// 顶栏标题文本
 		text: "Prosox0x0",
 		// 顶栏标题图标路径，默认使用 public/assets/home/home.webp
-		icon: "/assets/images/prosox-avatar.png",
+		icon: "/assets/images/prosox-avatar.webp",
 		// 网站Logo图片路径
-		logo: "/assets/images/prosox-avatar.png",
+		logo: "/assets/images/prosox-avatar.webp",
 	},
 
 	// 页面自动缩放配置
@@ -86,10 +86,10 @@ export const siteConfig: SiteConfig = {
 		// 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播
 		src: {
 			desktop: [
-				"/assets/images/prosox-banner.png",
+				"/assets/images/prosox-banner.webp",
 			], // 桌面横幅图片
 			mobile: [
-				"/assets/images/prosox-banner.png",
+				"/assets/images/prosox-banner.webp",
 			], // 移动横幅图片
 		}, // 使用本地横幅图片
 
