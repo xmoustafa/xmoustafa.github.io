@@ -2,12 +2,11 @@
 import { Icon } from "astro-icon/components";
 
 import { siteConfig } from "../../../config";
+import { blogCategories, blogTags } from "../../../config/taxonomyConfig";
 import I18nKey from "../../../i18n/i18nKey";
 import { i18n } from "../../../i18n/translation";
 import {
-	getCategoryList,
 	getSortedPosts,
-	getTagList,
 } from "../../../utils/content-utils";
 import WidgetLayout from "../common/WidgetLayout.astro";
 
@@ -23,8 +22,8 @@ const siteStartDate = siteConfig.siteStartDate || "2025-01-01";
 
 // 获取所有文章
 const posts = await getSortedPosts();
-const categories = await getCategoryList();
-const tags = await getTagList();
+const categories = blogCategories;
+const tags = blogTags;
 
 // 计算总字数
 let totalWords = 0;
@@ -106,8 +105,10 @@ const stats = [
 	{
 		icon: "material-symbols:ecg-heart-outline",
 		label: i18n(I18nKey.siteStatsLastUpdate),
-		value: 0, // 将由客户端更新
-		suffix: i18n(I18nKey.siteStatsDaysAgo).replace("{days}", ""),
+		value: lastPostDate ? 0 : "—", // 将由客户端更新
+		suffix: lastPostDate
+			? i18n(I18nKey.siteStatsDaysAgo).replace("{days}", "")
+			: "",
 		dynamic: true,
 		id: "last-update",
 	},

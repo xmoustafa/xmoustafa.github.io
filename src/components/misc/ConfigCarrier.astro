@@ -2,7 +2,6 @@
 import {
 	expressiveCodeConfig,
 	fullscreenWallpaperConfig,
-	sakuraConfig,
 	siteConfig,
 } from "@/config";
 ---
@@ -19,7 +18,6 @@ import {
 	data-fullscreen-opacity={fullscreenWallpaperConfig.opacity ?? 0.8}
 	data-fullscreen-blur={fullscreenWallpaperConfig.blur ?? 0}
 	data-default-wallpaper-mode={siteConfig.wallpaperMode.defaultMode}
-	data-sakura-enabled={sakuraConfig.enable ? "true" : "false"}
 	data-waves-enabled={siteConfig.banner?.waves?.enable ? "true" : "false"}
 	data-banner-title-enabled={siteConfig.banner?.homeText?.enable ? "true" : "false"}
 	data-banner-carousel-enabled={siteConfig.banner?.carousel?.enable ? "true" : "false"}

@@ -95,7 +95,6 @@ const favicons: Favicon[] =
 }
 
 <!-- 字体通过构建脚本压缩到 /assets/font/ 目录，此处不再预加载以避免 404 -->
-<!-- 字体在构建时通过 scripts/compress-fonts.js 处理并复制到 dist/ -->
 
 <!-- 预连接 Iconify API 以减少图标加载延迟 -->
 <link rel="preconnect" href="https://api.iconify.design" crossorigin />
@@ -133,6 +132,15 @@ const favicons: Favicon[] =
 	// 只在主题不同时才更新，避免触发不必要的重绘
 	if (currentTheme !== expressiveTheme) {
 		document.documentElement.setAttribute("data-theme", expressiveTheme);
+	}
+
+	// Apply the current brand palette once, including for returning visitors
+	// whose browser still stores the previous purple default. Visitors can
+	// continue using the color picker after this one-time migration.
+	const paletteVersion = "prosox-green-v1";
+	if (!themeColorFixed && localStorage.getItem("paletteVersion") !== paletteVersion) {
+		localStorage.setItem("hue", String(configHue));
+		localStorage.setItem("paletteVersion", paletteVersion);
 	}
 
 	// Load the hue from local storage

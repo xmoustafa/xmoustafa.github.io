@@ -1,49 +1,19 @@
+## About Me
 
-This website is built with the **Astro** framework using the [Mizuki](https://github.com/LyraVoid/Mizuki) theme.
+Hello, world. I'm **Prosox0x0**, a Junior Security Researcher focused on understanding how systems fail—and how to make them stronger.
 
-::github{repo="LyraVoid/Mizuki"}
+I work as a **SOC Level 2 Analyst** and continue to develop my expertise in **penetration testing**, **bug bounty hunting**, and **reverse engineering**. I enjoy taking software apart, tracing unexpected behavior, uncovering vulnerabilities, and turning complex technical findings into clear, actionable insight.
 
-## 🌟 Theme Features
+Cybersecurity is an endless discipline, and that is exactly what keeps me engaged. Every binary, alert, and application is an opportunity to investigate deeper, challenge assumptions, and sharpen my craft. I approach security research with curiosity, persistence, and a commitment to responsible disclosure.
 
-### 🎨 Design & User Experience
-- **Modern & Elegant Design** - Clean, minimalist interface with beautiful typography
-- **Fully Responsive** - Optimized for all devices from mobile to desktop
-- **Dark/Light Mode** - Automatic theme switching with smooth transitions
-- **Beautiful Typography** - Enhanced readability with JetBrains Mono font
-- **Smooth Animations** - Fluid page transitions and interactive elements
+## Arsenal & Skills
 
-### 🔍 Content & Search
-- **Advanced Search** - Powered by [Pagefind](https://pagefind.app/) for fast, accurate results
-- **Enhanced Markdown** - Extended syntax with code highlighting and math support
-- **Interactive Table of Contents** - Auto-scroll navigation for long articles
-- **RSS Feed Generation** - Stay updated with automatic feed generation
-- **Reading Time Estimation** - Know how long articles take to read
-- **Post Categorization** - Organize content with tags and categories
+- **Burp Suite** — Web application testing and traffic analysis
+- **Ghidra** — Static analysis and reverse engineering
+- **IDA Pro** — Binary disassembly and program analysis
+- **Web Exploitation** — Identifying and validating application vulnerabilities
+- **Malware Analysis** — Investigating malicious behavior and indicators
+- **x86/x64 Assembly** — Low-level program analysis and debugging
+- **Python Scripting** — Building automation and security tooling
 
-
-
-### 📱 Special Pages
-- **Anime Tracking Page** - Track your anime watching progress with ratings
-- **Friends Links Page** - Showcase friend websites with beautiful cards
-- **Diary/Moments Page** - Share life moments like social media posts
-- **Archive Page** - Organized timeline view of all posts
-- **About Page** - Customizable personal introduction (this page!)
-
-### 🛠 Technical Features
-- **Enhanced Code Blocks** - Powered by [Expressive Code](https://expressive-code.com/)
-- **Math Support** - LaTeX rendering with KaTeX for mathematical expressions
-- **Image Optimization** - PhotoSwipe gallery with lazy loading
-- **SEO Optimized** - Built-in sitemap and meta tags for better search visibility
-- **Performance Optimized** - Fast loading with caching and optimization
-- **Comment System Ready** - Integration support for Twikoo comments
-
-### 🎯 Advanced Markdown Features
-- **Callouts & Admonitions** - Beautiful info boxes with `> [!NOTE]`, `> [!TIP]`, `> [!WARNING]`
-- **Mathematical Equations** - Write LaTeX math with `$inline$` and `$$block$$` syntax
-- **GitHub Cards** - Embed repository cards with `::github{repo="user/repo"}`
-- **Syntax Highlighting** - Advanced code highlighting with line numbers
-- **Copy Code Buttons** - Easy code copying functionality
-
----
-
-*Built with ❤️ using Astro and inspired by modern web design principles.*
+> **I do not stop at what a system does—I investigate why it does it, how it can fail, and what that failure can teach us.**

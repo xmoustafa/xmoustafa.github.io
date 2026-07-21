@@ -2,38 +2,43 @@ import type { ProfileConfig } from "../types/config";
 
 // 个人资料配置
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/avatar.webp", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
-	name: "まつざか ゆき",
-	bio: "世界は大きい、君は行かなければならない",
+	avatar: "/assets/images/prosox-avatar.png", // Relative to /public because the path begins with '/'.
+	name: "Prosox0x0",
+	bio: "Penetration Tester · Security Researcher",
 	typewriter: {
-		enable: true, // 启用个人简介打字机效果
+		enable: false, // 启用个人简介打字机效果
 		speed: 80, // 打字速度（毫秒）
 	},
 	links: [
 		{
-			name: "Bilibili",
-			icon: "fa7-brands:bilibili",
-			url: "https://space.bilibili.com/701864046",
+			name: "X",
+			icon: "fa7-brands:x-twitter",
+			url: "https://x.com/Prosox0x0",
 		},
 		{
-			name: "Gitee",
-			icon: "mdi:git",
-			url: "https://gitee.com/matsuzakayuki",
+			name: "LinkedIn",
+			icon: "fa7-brands:linkedin-in",
+			url: "https://linkedin.com/in/moustafa-abdelnabbi",
 		},
 		{
-			name: "GitHub",
-			icon: "fa7-brands:github",
-			url: "https://github.com/matsuzaka-yuki",
+			name: "My Blog",
+			icon: "fa7-solid:globe",
+			url: "https://xmoustafa.github.io/",
 		},
 		{
-			name: "Codeberg",
-			icon: "simple-icons:codeberg",
-			url: "https://codeberg.org",
+			name: "Facebook",
+			icon: "fa7-brands:facebook-f",
+			url: "https://facebook.com/Moustafa.0x1337",
 		},
 		{
-			name: "Discord",
+			name: "Email",
+			icon: "fa7-solid:envelope",
+			url: "mailto:moustafa.abdelnaby@outlook.com",
+		},
+		{
+			name: "Discord: 1p_rootx",
 			icon: "fa7-brands:discord",
-			url: "https://discord.gg/MqW6TcQtVM",
+			url: "https://discord.com/users/1p_rootx",
 		},
 	],
 };

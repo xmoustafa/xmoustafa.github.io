@@ -21,8 +21,6 @@
  * musicPlayerConfig             │ musicConfig.ts             │ 音乐播放器（本地 / Meting 模式）
  * footerConfig                  │ footerConfig.ts            │ 页脚自定义 HTML
  * sidebarLayoutConfig           │ sidebarConfig.ts           │ 侧边栏组件布局（排序、动画、响应式断点）
- * sakuraConfig                  │ effectsConfig.ts           │ 樱花飘落特效（数量、速度、透明度）
- * pioConfig                     │ pioConfig.ts               │ Live2D 看板娘（模型、对话、位置）
  * relatedPostsConfig            │ relatedPostsConfig.ts      │ 相关文章推荐（开关、数量）
  * randomPostsConfig             │ randomPostsConfig.ts       │ 随机文章推荐（开关、数量）
  * widgetConfigs                 │ (聚合)                     │ 侧边栏 Widget 配置聚合对象
@@ -56,7 +54,6 @@ export { announcementConfig } from "./announcementConfig";
 export { fullscreenWallpaperConfig } from "./backgroundWallpaper";
 // ─── 互动功能 ───────────────────────────────────────────────
 export { commentConfig } from "./commentConfig";
-export { sakuraConfig } from "./effectsConfig";
 // ─── 代码块 ─────────────────────────────────────────────────
 export { expressiveCodeConfig } from "./expressiveCodeConfig";
 export { footerConfig } from "./footerConfig";
@@ -67,7 +64,6 @@ export { musicPlayerConfig } from "./musicConfig";
 // ─── 导航栏 ─────────────────────────────────────────────────
 export { navBarConfig } from "./navBarConfig";
 export { permalinkConfig } from "./permalinkConfig";
-export { pioConfig } from "./pioConfig";
 // ─── 个人资料 ───────────────────────────────────────────────
 export { profileConfig } from "./profileConfig";
 export { randomPostsConfig } from "./randomPostsConfig";
@@ -78,12 +74,11 @@ export { shareConfig } from "./shareConfig";
 export { sidebarLayoutConfig } from "./sidebarConfig";
 // ─── 站点核心 ───────────────────────────────────────────────
 export { SITE_LANG, siteConfig } from "./siteConfig";
+export { blogCategories, blogTags } from "./taxonomyConfig";
 
 import { announcementConfig } from "./announcementConfig";
 import { fullscreenWallpaperConfig } from "./backgroundWallpaper";
-import { sakuraConfig } from "./effectsConfig";
 import { musicPlayerConfig } from "./musicConfig";
-import { pioConfig } from "./pioConfig";
 // ─── Widget 配置聚合（供 Swup 等运行时使用）────────────────
 import { profileConfig } from "./profileConfig";
 import { randomPostsConfig } from "./randomPostsConfig";
@@ -96,9 +91,7 @@ export const widgetConfigs = {
 	announcement: announcementConfig,
 	music: musicPlayerConfig,
 	layout: sidebarLayoutConfig,
-	sakura: sakuraConfig,
 	fullscreenWallpaper: fullscreenWallpaperConfig,
-	pio: pioConfig,
 	share: shareConfig,
 	relatedPosts: relatedPostsConfig,
 	randomPosts: randomPostsConfig,

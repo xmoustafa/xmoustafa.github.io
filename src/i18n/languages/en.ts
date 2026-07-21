@@ -57,31 +57,8 @@ export const en: Translation = {
 	[Key.author]: "Author",
 	[Key.publishedAt]: "Published at",
 	[Key.license]: "License",
-	[Key.anime]: "Anime",
 	[Key.diary]: "Diary",
 
-	// Anime Page
-	[Key.animeTitle]: "My Anime List",
-	[Key.animeSubtitle]: "Record my anime journey",
-	[Key.animeStatusWatching]: "Watching",
-	[Key.animeStatusCompleted]: "Completed",
-	[Key.animeStatusPlanned]: "Planned",
-	[Key.animeStatusOnHold]: "On Hold",
-	[Key.animeStatusDropped]: "Dropped",
-	[Key.animeFilterAll]: "All",
-	[Key.animeYear]: "Year",
-	[Key.animeStudio]: "Studio",
-	[Key.animeEmpty]: "No anime data available",
-	[Key.animeEmptyBangumi]:
-		"Please check Bangumi configuration or network connection",
-	[Key.animeEmptyBilibili]:
-		"Please check Bilibili configuration or network connection",
-	[Key.animeEmptyLocal]:
-		"Please add anime information in src/data/anime.ts file",
-	[Key.animeConfigBilibili]:
-		"Please set your Bilibili vmid in the src/config/siteConfig.ts file",
-	[Key.animeConfigBangumi]:
-		"Please set your Bangumi userId in the src/config/siteConfig.ts file",
 
 	// Diary Page
 	[Key.diarySubtitle]: "Share life, anytime, anywhere",
@@ -230,7 +207,6 @@ export const en: Translation = {
 	[Key.wavesAnimation]: "Waves Animation",
 	[Key.bannerTitle]: "Banner Title",
 	[Key.bannerCarousel]: "Banner Carousel",
-	[Key.sakuraEffect]: "Sakura Effect",
 	[Key.effectsSettings]: "Effects",
 	[Key.postListLayout]: "Post Layout",
 	[Key.postListLayoutList]: "List",

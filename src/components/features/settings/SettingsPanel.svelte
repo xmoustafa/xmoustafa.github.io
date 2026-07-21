@@ -14,14 +14,12 @@ import {
 	getDefaultOverlayBlur,
 	getDefaultOverlayCardOpacity,
 	getDefaultOverlayOpacity,
-	getDefaultSakuraEnabled,
 	getDefaultWavesEnabled,
 	getHue,
 	getStoredBannerTitleEnabled,
 	getStoredOverlayBlur,
 	getStoredOverlayCardOpacity,
 	getStoredOverlayOpacity,
-	getStoredSakuraEnabled,
 	getStoredWallpaperMode,
 	getStoredWavesEnabled,
 	setBannerTitleEnabled,
@@ -29,12 +27,11 @@ import {
 	setOverlayBlur,
 	setOverlayCardOpacity,
 	setOverlayOpacity,
-	setSakuraEnabled,
 	setWallpaperMode,
 	setWavesEnabled,
 } from "@utils/setting-utils";
 import { onMount } from "svelte";
-import { fullscreenWallpaperConfig, sakuraConfig, siteConfig } from "@/config";
+import { fullscreenWallpaperConfig, siteConfig } from "@/config";
 
 import type { WALLPAPER_MODE } from "@/types/config";
 
@@ -77,9 +74,6 @@ const isBannerTitleSwitchable =
 	(siteConfig.banner?.homeText?.switchable ?? false);
 const hasBannerSettings = isWavesSwitchable || isBannerTitleSwitchable;
 
-const isSakuraSwitchable =
-	sakuraConfig.enable && (sakuraConfig.switchable ?? false);
-
 const showModeValue = siteConfig.wallpaperMode.showModeSwitchOnMobile;
 let isMobile = $state(false);
 
@@ -96,8 +90,7 @@ const hasAnyContent = $derived(
 		isWallpaperModeSwitchable ||
 		allowLayoutSwitch ||
 		hasOverlaySettings ||
-		hasBannerSettings ||
-		isSakuraSwitchable,
+		hasBannerSettings,
 );
 
 let hue = $state(getHue());
@@ -114,8 +107,6 @@ let wavesEnabled = $state(getDefaultWavesEnabled());
 const defaultWavesEnabled = getDefaultWavesEnabled();
 let bannerTitleEnabled = $state(getDefaultBannerTitleEnabled());
 const defaultBannerTitleEnabled = getDefaultBannerTitleEnabled();
-let sakuraEnabled = $state(getDefaultSakuraEnabled());
-const defaultSakuraEnabled = getDefaultSakuraEnabled();
 
 let overlaySettingsIsDefault = $derived(
 	(!isOverlayOpacitySwitchable || overlayOpacity === defaultOverlayOpacity) &&
@@ -193,11 +184,6 @@ function toggleBannerTitleEnabled() {
 	setBannerTitleEnabled(bannerTitleEnabled);
 }
 
-function toggleSakuraEnabled() {
-	sakuraEnabled = !sakuraEnabled;
-	setSakuraEnabled(sakuraEnabled);
-}
-
 function switchWallpaperMode(newMode: WALLPAPER_MODE) {
 	wallpaperMode = newMode;
 	setWallpaperMode(newMode);
@@ -247,7 +233,6 @@ onMount(() => {
 	overlayCardOpacity = getStoredOverlayCardOpacity();
 	wavesEnabled = getStoredWavesEnabled();
 	bannerTitleEnabled = getStoredBannerTitleEnabled();
-	sakuraEnabled = getStoredSakuraEnabled();
 
 	const savedLayout = siteConfig.postListLayout?.enable
 		? sessionStorage.getItem("postListLayout") ||
@@ -417,35 +402,6 @@ $effect(() => {
 					{#if wallpaperMode === WALLPAPER_NONE}
 						<Icon icon="material-symbols:check-circle" class="text-[1rem] shrink-0 text-(--primary)" />
 					{/if}
-				</button>
-			</div>
-		</div>
-	{/if}
-
-	{#if isSakuraSwitchable}
-		<div class="mt-2 mb-2">
-			<div
-				class="flex gap-2 font-bold text-lg text-neutral-900 dark:text-neutral-100 transition relative ml-3 mb-2
-				before:w-1 before:h-4 before:rounded-md before:bg-(--primary)
-				before:absolute before:-left-3 before:top-1/2 before:-translate-y-1/2"
-			>
-				{i18n(I18nKey.effectsSettings)}
-			</div>
-			<div class="space-y-1">
-				<button
-					class="w-full btn-regular rounded-md py-2 px-3 flex items-center gap-3 text-left active:scale-95 transition-all relative overflow-hidden"
-					class:bg-(--btn-regular-bg-hover)={sakuraEnabled}
-					onclick={toggleSakuraEnabled}
-				>
-					<Icon icon="material-symbols:spa-outline-rounded" class="text-[1.25rem] shrink-0" />
-					<span class="text-sm flex-1">{i18n(I18nKey.sakuraEffect)}</span>
-					<div class="w-10 h-5 rounded-full transition-all duration-200 relative"
-						class:bg-(--primary)={sakuraEnabled}
-						class:bg-(--btn-regular-bg-active)={!sakuraEnabled}>
-						<div class="absolute top-0.5 w-4 h-4 bg-white rounded-full shadow transition-all duration-200"
-							class:left-0.5={!sakuraEnabled}
-							class:left-5={sakuraEnabled}></div>
-					</div>
 				</button>
 			</div>
 		</div>

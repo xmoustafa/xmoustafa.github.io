@@ -1,5 +1,5 @@
 {
-  "name": "mizuki",
+  "name": "prosox-security-blog",
   "type": "module",
   "version": "9.0",
   "scripts": {
@@ -10,10 +10,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "check": "astro check",
-    "update-anime": "node scripts/update-anime.mjs",
-    "update-bangumi": "node scripts/update-bangumi.mjs",
-    "update-bilibili": "node scripts/update-bilibili.mjs",
-    "build": "node scripts/update-anime.mjs && astro build && pagefind --site dist",
+    "build": "astro build && pagefind --site dist",
     "submit": "node scripts/indexnow-submit.js",
     "preview": "astro preview",
     "astro": "astro",
@@ -45,7 +42,6 @@
     "dayjs": "^1.11.21",
     "hastscript": "^9.0.1",
     "katex": "^0.17.0",
-    "l2d-widget": "^0.1.0",
     "markdown-it": "^14.2.0",
     "marked": "^18.0.5",
     "node-html-parser": "^8.0.4",

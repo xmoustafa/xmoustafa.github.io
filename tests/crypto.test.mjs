@@ -12,7 +12,7 @@ const CRYPTO_CONSTANTS = {
 	IV_LENGTH: 12,
 	AUTH_TAG_LENGTH: 16,
 	KEY_LENGTH: 32,
-	VERIFY_PREFIX: "MIZUKI-VERIFY:",
+	VERIFY_PREFIX: "PROSOX-VERIFY:",
 };
 
 // === 服务端加密（复刻 crypto-utils.ts） ===
@@ -140,7 +140,7 @@ await test("CRYPTO_CONSTANTS have required fields", () => {
 	assert(CRYPTO_CONSTANTS.IV_LENGTH === 12, "IV_LENGTH");
 	assert(CRYPTO_CONSTANTS.AUTH_TAG_LENGTH === 16, "AUTH_TAG_LENGTH");
 	assert(CRYPTO_CONSTANTS.KEY_LENGTH === 32, "KEY_LENGTH");
-	assert(CRYPTO_CONSTANTS.VERIFY_PREFIX === "MIZUKI-VERIFY:", "VERIFY_PREFIX");
+	assert(CRYPTO_CONSTANTS.VERIFY_PREFIX === "PROSOX-VERIFY:", "VERIFY_PREFIX");
 });
 
 console.log(`\nResults: ${passed} passed, ${failed} failed`);

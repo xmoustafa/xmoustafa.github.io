@@ -10,7 +10,7 @@ import type {
 export interface SiteConfig {
 	title: string;
 	subtitle: string;
-	siteURL: string; // 站点URL，以斜杠结尾，例如：https://mizuki.mysqil.com/
+	siteURL: string; // Site URL with a trailing slash.
 	keywords?: string[]; // 站点关键词，用于生成 <meta name="keywords">
 	siteStartDate?: string; // 站点开始日期，格式：YYYY-MM-DD，用于计算运行天数
 
@@ -33,7 +33,6 @@ export interface SiteConfig {
 
 	// 特色页面开关配置
 	featurePages: {
-		anime: boolean; // 番剧页面开关
 		diary: boolean; // 日记页面开关
 		friends: boolean; // 友链页面开关
 		projects: boolean; // 项目页面开关
@@ -69,25 +68,6 @@ export interface SiteConfig {
 	};
 
 	// 字体现在通过 astro.config.mjs 的 fonts 选项配置（Astro Font API）
-
-	// 添加bangumi配置
-	bangumi?: {
-		userId?: string; // Bangumi用户ID
-		fetchOnDev?: boolean;
-	};
-
-	// 添加bilibili配置
-	bilibili?: {
-		vmid?: string; // Bilibili用户ID (vmid)
-		fetchOnDev?: boolean; // 是否在开发环境下获取 Bilibili 数据
-		coverMirror?: string; // 封面图片镜像源（可选，默认为空字符串）
-		useWebp?: boolean; // 是否使用WebP格式（默认 true）
-	};
-
-	// 添加番剧页面配置
-	anime?: {
-		mode?: "bangumi" | "local" | "bilibili"; // 番剧页面模式
-	};
 
 	// 日记页面 Memos API 地址，客户端 fetch 获取动态数据
 	diaryApiUrl?: string;
@@ -194,13 +174,12 @@ export enum LinkPreset {
 	Archive = 1,
 	About = 2,
 	Friends = 3,
-	Anime = 4,
-	Diary = 5,
-	Albums = 6,
-	Projects = 7,
-	Skills = 8,
-	Timeline = 9,
-	AITools = 10,
+	Diary = 4,
+	Albums = 5,
+	Projects = 6,
+	Skills = 7,
+	Timeline = 8,
+	AITools = 9,
 }
 
 export interface NavBarLink {
@@ -362,7 +341,6 @@ export type WidgetComponentType =
 	| "card-toc" // 卡片式目录组件
 	| "music-player"
 	| "music-sidebar"
-	| "pio" // 添加 pio 组件类型
 	| "site-stats" // 站点统计组件
 	| "calendar" // 日历组件
 	| "custom";
@@ -399,34 +377,6 @@ export interface SidebarLayoutConfig {
 			desktop: number; // 桌面端断点（px）
 		};
 	};
-}
-
-export interface SakuraConfig {
-	enable: boolean;
-	switchable?: boolean;
-	sakuraNum: number;
-	limitTimes: number;
-	size: {
-		min: number; // 樱花最小尺寸倍数
-		max: number; // 樱花最大尺寸倍数
-	};
-	opacity: {
-		min: number; // 樱花最小不透明度
-		max: number; // 樱花最大不透明度
-	};
-	speed: {
-		horizontal: {
-			min: number; // 水平移动速度最小值
-			max: number; // 水平移动速度最大值
-		};
-		vertical: {
-			min: number; // 垂直移动速度最小值
-			max: number; // 垂直移动速度最大值
-		};
-		rotation: number; // 旋转速度
-		fadeSpeed: number; // 消失速度
-	};
-	zIndex: number; // 层级，确保樱花在合适的层级显示
 }
 
 export interface FullscreenWallpaperConfig {
@@ -466,47 +416,6 @@ export interface FullscreenWallpaperConfig {
 					opacity?: boolean;
 					blur?: boolean;
 			  };
-	};
-}
-
-/**
- * Pio 看板娘配置
- */
-export interface PioConfig {
-	enable: boolean; // 是否启用看板娘
-	models?: string[]; // 模型文件路径数组（支持 .model.json 和 .model3.json）
-	position?: "left" | "right"; // 看板娘位置
-	width?: number; // 看板娘宽度
-	height?: number; // 看板娘高度
-	mode?: "static" | "fixed" | "draggable"; // 展现模式
-	hiddenOnMobile?: boolean; // 是否在移动设备上隐藏
-	hideAboutMenu?: boolean; // 是否隐藏内置 About 菜单按钮
-	dialog?: {
-		welcome?: string | string[]; // 欢迎词
-		touch?: string | string[]; // 触摸提示
-		home?: string; // 首页提示
-		skin?: [string, string]; // 换装提示 [切换前, 切换后]
-		close?: string; // 关闭提示
-		link?: string; // 关于链接
-		custom?: {
-			selector: string; // CSS选择器
-			type: "read" | "link"; // 类型
-			text?: string; // 自定义文本
-		}[];
-	};
-	tips?: {
-		welcomeMessage?: string[]; // 欢迎语
-		messages?: string[]; // 循环提示内容
-		duration?: number; // 每条 tips 展示时长（ms）
-		interval?: number; // tips 循环间隔（ms）
-	};
-	menus?: {
-		items?: {
-			icon?: string; // Iconify 图标名称
-			label: string; // 无障碍标题
-			action: string; // 预定义动作名称
-		}[];
-		align?: "left" | "right"; // 菜单对齐方式
 	};
 }
 

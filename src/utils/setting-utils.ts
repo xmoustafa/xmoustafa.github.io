@@ -1,6 +1,6 @@
 import { DARK_MODE, DEFAULT_THEME, LIGHT_MODE } from "@constants/constants";
 
-import { fullscreenWallpaperConfig, sakuraConfig, siteConfig } from "@/config";
+import { fullscreenWallpaperConfig, siteConfig } from "@/config";
 import type { LIGHT_DARK_MODE, WALLPAPER_MODE } from "@/types/config";
 
 export function getDefaultHue(): number {
@@ -394,24 +394,5 @@ export function setBannerCarouselEnabled(enabled: boolean): void {
 	localStorage.setItem("bannerCarouselEnabled", String(enabled));
 	window.dispatchEvent(
 		new CustomEvent("banner-carousel-change", { detail: { enabled } }),
-	);
-}
-
-// ─── Sakura ──────────────────────────────────────────────────
-
-export function getDefaultSakuraEnabled(): boolean {
-	return sakuraConfig.enable ?? false;
-}
-
-export function getStoredSakuraEnabled(): boolean {
-	if (!sakuraConfig.enable) return false;
-	const stored = localStorage.getItem("sakuraEnabled");
-	return stored !== null ? stored === "true" : false;
-}
-
-export function setSakuraEnabled(enabled: boolean): void {
-	localStorage.setItem("sakuraEnabled", String(enabled));
-	window.dispatchEvent(
-		new CustomEvent("sakura-toggle", { detail: { enabled } }),
 	);
 }
