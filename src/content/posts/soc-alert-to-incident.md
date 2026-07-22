@@ -4,7 +4,7 @@ published: 2026-07-19
 description: "How a SOC analyst turns a noisy alert into a defensible incident decision through context, correlation, and evidence."
 tags: [Threat Hunting, Security Research]
 category: SOC
-author: Prosox0x0
+author: Moustafa Mahmoud
 draft: false
 ---
 

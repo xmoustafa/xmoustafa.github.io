@@ -643,7 +643,7 @@ export class SwupHooksManager {
 	private syncThemeState(): void {
 		const storedTheme =
 			localStorage.getItem(THEME_CONFIG.themeStorageKey) ||
-			THEME_CONFIG.lightMode;
+			THEME_CONFIG.darkMode;
 		const isDark = storedTheme === THEME_CONFIG.darkMode;
 		const expectedTheme = isDark
 			? THEME_CONFIG.darkExpressiveTheme

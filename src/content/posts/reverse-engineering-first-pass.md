@@ -4,7 +4,7 @@ published: 2026-07-20
 description: "A repeatable first-pass workflow for understanding an unfamiliar Windows executable without getting lost in details."
 tags: [Reverse Engineering, Security Research]
 category: Reverse
-author: Prosox0x0
+author: Moustafa Mahmoud
 draft: false
 ---
 

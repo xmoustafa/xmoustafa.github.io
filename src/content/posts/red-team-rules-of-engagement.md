@@ -4,7 +4,7 @@ published: 2026-07-17
 description: "A concise look at how scope, safety controls, communications, and evidence make adversary simulation valuable."
 tags: [Penetration Testing, Security Research]
 category: Red Team
-author: Prosox0x0
+author: Moustafa Mahmoud
 draft: false
 ---
 
