@@ -5,8 +5,1990 @@
   <link href="https://xmoustafa.github.io/" rel="alternate" type="text/html"/>
   <link href="https://xmoustafa.github.io/atom.xml" rel="self" type="application/atom+xml"/>
   <id>https://xmoustafa.github.io/</id>
-  <updated>2026-07-21T21:34:48.042Z</updated>
+  <updated>2026-07-22T21:32:07.623Z</updated>
   <language>en</language>
+  <entry>
+    <title>eCPPTv3, OSCP & CPTS Preparation Arsenal</title>
+    <link href="https://xmoustafa.github.io/posts/ecpptv3-oscp-cpts-preparation-arsenal/" rel="alternate" type="text/html"/>
+    <id>https://xmoustafa.github.io/posts/ecpptv3-oscp-cpts-preparation-arsenal/</id>
+    <published>2026-07-22T00:00:00.000Z</published>
+    <updated>2026-07-22T00:00:00.000Z</updated>
+    <summary>A structured lab roadmap for building the enumeration, exploitation, pivoting, privilege-escalation, Active Directory, and reporting skills tested across eCPPTv3, OSCP, and CPTS.</summary>
+    <content type="html"><![CDATA[<h1>eCPPTv3, OSCP &amp; CPTS Preparation Arsenal</h1>
+<p>Preparing for a practical penetration-testing certification is not about collecting the largest possible list of vulnerable machines. It is about choosing labs deliberately, documenting a repeatable methodology, and recognizing the same attack pattern when the technology changes.</p>
+<p>This field guide organizes practice targets around the core capabilities shared by <strong>eCPPTv3</strong>, <strong>OSCP</strong>, and <strong>CPTS</strong>. The underlying machine list was curated by <strong>N1NJ10</strong> and is available in the complete <a href="https://github.com/N1NJ10/Offsec-Practice-Labs">Offsec Practice Labs repository</a>.</p>
+<blockquote>
+<p><strong>LEGAL // LAB USE ONLY</strong><br />
+Practice only against systems you own or platforms that explicitly authorize testing. Never scan or attack an unknown public target.</p>
+</blockquote>
+<h2>Mission Profile</h2>
+<table>
+<thead>
+<tr>
+<th>Track</th>
+<th>Primary emphasis</th>
+<th>Practice objective</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>eCPPTv3</strong></td>
+<td>Methodology, web testing, exploitation, pivoting, and reporting</td>
+<td>Build a complete engagement workflow and explain the evidence clearly.</td>
+</tr>
+<tr>
+<td><strong>OSCP</strong></td>
+<td>Enumeration discipline, exploitation, privilege escalation, and Active Directory</td>
+<td>Reach a working solution under time pressure without losing structure.</td>
+</tr>
+<tr>
+<td><strong>CPTS</strong></td>
+<td>Broad technical depth, modern infrastructure, pivoting, AD, and professional reporting</td>
+<td>Understand why each technique works and connect findings across a network.</td>
+</tr>
+</tbody>
+</table>
+<h2>Mission Control</h2>
+<blockquote>
+<p><strong>ARSENAL STATUS // READY</strong><br />
+<strong>193</strong> authorized training resources · <strong>9</strong> skill domains · <strong>42</strong> detailed tables · <strong>0</strong> shortened links</p>
+</blockquote>
+<p>This page is designed as an operator's field index. Start with the domain that matches your weakest skill, record evidence for every target, and advance only when you can reproduce the result from a clean environment without a walkthrough.</p>
+<h3>Coverage Map</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Domain</th>
+<th>Resources</th>
+<th>Primary objective</th>
+<th>Jump</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>01</strong></td>
+<td>Resource Development &amp; Initial Access</td>
+<td><strong>34</strong></td>
+<td>Enumeration, footholds, and shell access</td>
+<td><a href="#01--resource-development--initial-access">Open domain</a></td>
+</tr>
+<tr>
+<td><strong>02</strong></td>
+<td>Web Application Penetration Testing</td>
+<td><strong>44</strong></td>
+<td>Manual validation and exploit chaining</td>
+<td><a href="#02--web-application-penetration-testing">Open domain</a></td>
+</tr>
+<tr>
+<td><strong>03</strong></td>
+<td>Network Security &amp; Pivoting</td>
+<td><strong>13</strong></td>
+<td>Tunneling, routing, and lateral movement</td>
+<td><a href="#03--network-security--pivoting">Open domain</a></td>
+</tr>
+<tr>
+<td><strong>04</strong></td>
+<td>Exploit Development</td>
+<td><strong>16</strong></td>
+<td>Stack control and reliable exploit scripting</td>
+<td><a href="#04--exploit-development">Open domain</a></td>
+</tr>
+<tr>
+<td><strong>05</strong></td>
+<td>Post-Exploitation &amp; Privilege Escalation</td>
+<td><strong>21</strong></td>
+<td>Linux and Windows privilege paths</td>
+<td><a href="#05--post-exploitation--privilege-escalation">Open domain</a></td>
+</tr>
+<tr>
+<td><strong>06</strong></td>
+<td>Active Directory &amp; Red Teaming</td>
+<td><strong>23</strong></td>
+<td>Identity attack paths and domain operations</td>
+<td><a href="#06--active-directory--red-teaming">Open domain</a></td>
+</tr>
+<tr>
+<td><strong>07</strong></td>
+<td>Malware Analysis</td>
+<td><strong>7</strong></td>
+<td>Static, dynamic, and behavioral analysis</td>
+<td><a href="#07--malware-analysis">Open domain</a></td>
+</tr>
+<tr>
+<td><strong>08</strong></td>
+<td>Reverse Engineering</td>
+<td><strong>10</strong></td>
+<td>Assembly, decompilation, and debugging</td>
+<td><a href="#08--reverse-engineering">Open domain</a></td>
+</tr>
+<tr>
+<td><strong>09</strong></td>
+<td>Hard CTF Challenges</td>
+<td><strong>25</strong></td>
+<td>Full-chain problem solving under pressure</td>
+<td><a href="#09--hard-ctf--challenges">Open domain</a></td>
+</tr>
+</tbody>
+</table>
+<h3>Access &amp; Difficulty Legend</h3>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Meaning</th>
+<th>Operator guidance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Free</strong></td>
+<td>No paid subscription listed</td>
+<td>Confirm current platform terms before starting.</td>
+</tr>
+<tr>
+<td><strong>Paid / VIP</strong></td>
+<td>Subscription or course access may be required</td>
+<td>Prioritize only if it fills a specific skills gap.</td>
+</tr>
+<tr>
+<td><strong>Beg / Easy</strong></td>
+<td>Guided fundamentals</td>
+<td>Build clean notes and a repeatable checklist.</td>
+</tr>
+<tr>
+<td><strong>Int / Medium</strong></td>
+<td>Multi-step attack chain</td>
+<td>Time-box hypotheses and document pivots.</td>
+</tr>
+<tr>
+<td><strong>Hard / Insane</strong></td>
+<td>Deep or intentionally deceptive path</td>
+<td>Attempt only after reproducing the core workflow independently.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>START SIGNAL</strong><br />
+New to the roadmap? Begin with <strong>01 Initial Access</strong>, continue through <strong>02 Web</strong>, then alternate <strong>05 Privilege Escalation</strong> targets with full boot-to-root machines. Add <strong>03 Pivoting</strong> and <strong>06 Active Directory</strong> only after your enumeration notes are consistent.</p>
+</blockquote>
+<h2>Full Arsenal // 193 Linked Resources</h2>
+<p>The directory below includes every machine, room, course, and resource from the upstream arsenal. Platform availability and pricing can change; verify the current terms before beginning a lab.</p>
+<h3>01 // Resource Development &amp; Initial Access</h3>
+<p><em>Focus: Enumeration, Brute-force, Shells, Old School Exploits.</em></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Kioptrix Level 1</strong></td>
+<td>Beg</td>
+<td>SMB, Apache, mod_ssl</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/kioptrix-level-1-1,22/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Kioptrix Level 1.1</strong></td>
+<td>Beg</td>
+<td>SQL Injection, RCE</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/kioptrix-level-11-2,23/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Kioptrix Level 1.2</strong></td>
+<td>Beg</td>
+<td>LotusCMS</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/kioptrix-level-12-3,24/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Kioptrix Level 1.3</strong></td>
+<td>Beg</td>
+<td>SQLi, Restricted Shell</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/kioptrix-level-13-4,25/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Kioptrix 2014</strong></td>
+<td>Int</td>
+<td>Web Exploits</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/kioptrix-2014-5,62/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Stapler 1</strong></td>
+<td>Int</td>
+<td>SMB Enum, Password Spraying</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/stapler-1,150/">Download</a></td>
+</tr>
+<tr>
+<td><strong>SickOs 1.1</strong></td>
+<td>Int</td>
+<td>Squid Proxy, Shellshock</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/sickos-11,132/">Download</a></td>
+</tr>
+<tr>
+<td><strong>SickOs 1.2</strong></td>
+<td>Int</td>
+<td>PUT Method, Cron Jobs</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/sickos-12,144/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Basic Pentesting 1</strong></td>
+<td>Beg</td>
+<td>Web to Root</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/basic-pentesting-1,216/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Tr0ll 1</strong></td>
+<td>Int</td>
+<td>FTP, Binary Analysis</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/tr0ll-1,100/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Tr0ll 2</strong></td>
+<td>Hard</td>
+<td>Deep Rabbit Holes</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/tr0ll-2,107/">Download</a></td>
+</tr>
+<tr>
+<td><strong>LazySysAdmin 1</strong></td>
+<td>Beg</td>
+<td>Info Disclosure</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/lazysysadmin-1,205/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Bulldog 1</strong></td>
+<td>Int</td>
+<td>Django, Hidden Files</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/bulldog-1,211/">Download</a></td>
+</tr>
+<tr>
+<td><strong>RickdiculouslyEasy 1</strong></td>
+<td>Beg</td>
+<td>Multiple Paths</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/rickdiculouslyeasy-1,207/">Download</a></td>
+</tr>
+<tr>
+<td><strong>SkyTower 1</strong></td>
+<td>Int</td>
+<td>SSH Tunneling</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/skytower-1,96/">Download</a></td>
+</tr>
+<tr>
+<td><strong>VulnOS 2</strong></td>
+<td>Int</td>
+<td>General Pentest</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/vulnos-2,147/">Download</a></td>
+</tr>
+<tr>
+<td><strong>HackLAB: Vulnix</strong></td>
+<td>Int</td>
+<td>General Pentest</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/hacklab-vulnix,48/">Download</a></td>
+</tr>
+<tr>
+<td><strong>pWnOS 2.0</strong></td>
+<td>Int</td>
+<td>Old School</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/pwnos-20-pre-release,34/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Prime 1</strong></td>
+<td>Int</td>
+<td>General Pentest</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/prime-1,358/">Download</a></td>
+</tr>
+<tr>
+<td><strong>NullByte</strong></td>
+<td>Int</td>
+<td>General Pentest</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/nullbyte-1,126/">Download</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>TryHackMe Labs (Initial Access)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Room Name</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nmap Live Host Discovery</strong></td>
+<td>Network Scanning</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/nmap">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Hydra</strong></td>
+<td>Brute-forcing</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/hydra">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Blue</strong></td>
+<td>EternalBlue (MS17-010)</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/blue">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Vulnversity</strong></td>
+<td>Upload Vulnerabilities</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/vulnversity">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Bounty Hacker</strong></td>
+<td>FTP/SSH Attacks</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/cowboyhacker">THM Link</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>HackMyVM Labs (Initial Access)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Gift</strong></td>
+<td>Easy</td>
+<td>Basic Enumeration</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=Gift">HMV Link</a></td>
+</tr>
+<tr>
+<td><strong>Friendly</strong></td>
+<td>Easy</td>
+<td>FTP/SSH</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=Friendly">HMV Link</a></td>
+</tr>
+<tr>
+<td><strong>EasyPeasy</strong></td>
+<td>Easy</td>
+<td>Web/Shells</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=EasyPeasy">HMV Link</a></td>
+</tr>
+<tr>
+<td><strong>Unbaked Pie</strong></td>
+<td>Medium</td>
+<td>Docker/Pivoting</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=UnbakedPie">HMV Link</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>HackingHub Labs (Initial Access)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mission Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mission 1</strong></td>
+<td>Easy</td>
+<td>Basic Recon</td>
+<td>Free</td>
+<td><a href="https://hackinghub.io/missions">Start Mission</a></td>
+</tr>
+<tr>
+<td><strong>Mission 2</strong></td>
+<td>Medium</td>
+<td>Foothold</td>
+<td>Free</td>
+<td><a href="https://hackinghub.io/missions">Start Mission</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>HackTheBox Labs (Initial Access)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lame</strong></td>
+<td>Easy</td>
+<td>Enumeration/Samba</td>
+<td>VIP</td>
+<td><a href="https://app.hackthebox.com/machines/Lame">HTB Link</a></td>
+</tr>
+<tr>
+<td><strong>Beep</strong></td>
+<td>Easy</td>
+<td>Web/Asterisk</td>
+<td>VIP</td>
+<td><a href="https://app.hackthebox.com/machines/Beep">HTB Link</a></td>
+</tr>
+<tr>
+<td><strong>Cronos</strong></td>
+<td>Medium</td>
+<td>DNS/Web</td>
+<td>VIP</td>
+<td><a href="https://app.hackthebox.com/machines/Cronos">HTB Link</a></td>
+</tr>
+</tbody>
+</table>
+<h3>02 // Web Application Penetration Testing</h3>
+<p><em>Focus: SQLi, XSS, LFI, RCE, Manual Exploitation.</em></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mr-Robot 1</strong></td>
+<td>Int</td>
+<td>Wordpress, Keys, Decoding</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/mr-robot-1,151/">Download</a></td>
+</tr>
+<tr>
+<td><strong>PwnLab: init</strong></td>
+<td>Int</td>
+<td>LFI, PHP Filters, Cmd Inj</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/pwnlab-init,158/">Download</a></td>
+</tr>
+<tr>
+<td><strong>WebSploit2018</strong></td>
+<td>Int</td>
+<td>Vulnerable Apps Collection</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/websploit-2018,245/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Billu: b0x</strong></td>
+<td>Int</td>
+<td>SQLi, RCE, LFI</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/billu-b0x,188/">Download</a></td>
+</tr>
+<tr>
+<td><strong>FristiLeaks 1.3</strong></td>
+<td>Int</td>
+<td>LFI to Shell, PrivEsc</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/fristileaks-13,133/">Download</a></td>
+</tr>
+<tr>
+<td><strong>VulnCMS 1</strong></td>
+<td>Beg</td>
+<td>CMS Enumeration</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/vulncms-1,169/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Pinkys Palace v1</strong></td>
+<td>Hard</td>
+<td>SQLi, Dictionary Attacks</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/pinkys-palace-v1,225/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Pinkys Palace v2</strong></td>
+<td>Hard</td>
+<td>Proxy Tunneling, SQLi</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/pinkys-palace-v2,229/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Hacksudo: Thor</strong></td>
+<td>Int</td>
+<td>CGI-bin, Shellshock</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/hacksudo-thor,733/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Deathnote 1</strong></td>
+<td>Int</td>
+<td>LFI, RCE, Upload</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/deathnote-1,739/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Breach 1.0</strong></td>
+<td>Int</td>
+<td>Traffic Analysis, SSL</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/breach-1,152/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Breach 2.1</strong></td>
+<td>Int</td>
+<td>Traffic Analysis</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/breach-21,159/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Raven 1</strong></td>
+<td>Int</td>
+<td>Wordpress, PHPMailer</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/raven-1,256/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Raven 2</strong></td>
+<td>Int</td>
+<td>PHPMailer RCE</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/raven-2,269/">Download</a></td>
+</tr>
+<tr>
+<td><strong>DC-9</strong></td>
+<td>Int</td>
+<td>SQLi Search, LFI</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/dc-9,412/">Download</a></td>
+</tr>
+<tr>
+<td><strong>DevGuru 1</strong></td>
+<td>Int</td>
+<td>Web Focus</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/devguru-1,620/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Photographer 1</strong></td>
+<td>Beg</td>
+<td>Web/SMB</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/photographer-1,519/">Download</a></td>
+</tr>
+<tr>
+<td><strong>W34kn3ss 1</strong></td>
+<td>Int</td>
+<td>Web/PrivEsc</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/w34kn3ss-1,270/">Download</a></td>
+</tr>
+<tr>
+<td><strong>GoldenEye 1</strong></td>
+<td>Hard</td>
+<td>POP3, Compilation</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/goldeneye-1,240/">Download</a></td>
+</tr>
+<tr>
+<td><strong>LemonSqueezy</strong></td>
+<td>Int</td>
+<td>Web</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/lemonsqueezy-1,473/">Download</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>TryHackMe Labs (Web App)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Room Name</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OWASP Top 10</strong></td>
+<td>Critical Web Vulns</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/owasptop10">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>SQL Injection Lab</strong></td>
+<td>Manual/Automated SQLi</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/sqlilab">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Burp Suite Basics</strong></td>
+<td>Proxy Interception</td>
+<td>Paid</td>
+<td><a href="https://tryhackme.com/room/burpsuitebasics">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>OWASP Juice Shop</strong></td>
+<td>Modern Web Exploitation</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/owaspjuiceshop">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>File Inclusion</strong></td>
+<td>LFI/RFI/Path Traversal</td>
+<td>Paid</td>
+<td><a href="https://tryhackme.com/room/fileinc">THM Link</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>HackMyVM Labs (Web App)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Registry</strong></td>
+<td>Medium</td>
+<td>Docker Registry/Web</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=Registry">HMV Link</a></td>
+</tr>
+<tr>
+<td><strong>Base</strong></td>
+<td>Easy</td>
+<td>Basic Web</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=Base">HMV Link</a></td>
+</tr>
+<tr>
+<td><strong>Site</strong></td>
+<td>Medium</td>
+<td>Web Exploitation</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=Site">HMV Link</a></td>
+</tr>
+<tr>
+<td><strong>Panel</strong></td>
+<td>Easy</td>
+<td>Admin Panel Bypass</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=Panel">HMV Link</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>PortSwigger Academy Labs (Web App)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SQL Injection (All Labs)</strong></td>
+<td>Manual SQLi Mastery</td>
+<td>Free</td>
+<td><a href="https://portswigger.net/web-security/sql-injection">Start Lab</a></td>
+</tr>
+<tr>
+<td><strong>Cross-Site Scripting (XSS)</strong></td>
+<td>Reflected, Stored, DOM</td>
+<td>Free</td>
+<td><a href="https://portswigger.net/web-security/cross-site-scripting">Start Lab</a></td>
+</tr>
+<tr>
+<td><strong>Cross-Site Request Forgery</strong></td>
+<td>CSRF Token Bypass</td>
+<td>Free</td>
+<td><a href="https://portswigger.net/web-security/csrf">Start Lab</a></td>
+</tr>
+<tr>
+<td><strong>XML External Entity (XXE)</strong></td>
+<td>Injection &amp; Retrieval</td>
+<td>Free</td>
+<td><a href="https://portswigger.net/web-security/xxe">Start Lab</a></td>
+</tr>
+<tr>
+<td><strong>Server-Side Request Forgery</strong></td>
+<td>SSRF &amp; Cloud Metadata</td>
+<td>Free</td>
+<td><a href="https://portswigger.net/web-security/ssrf">Start Lab</a></td>
+</tr>
+<tr>
+<td><strong>Command Injection</strong></td>
+<td>OS Command Execution</td>
+<td>Free</td>
+<td><a href="https://portswigger.net/web-security/os-command-injection">Start Lab</a></td>
+</tr>
+<tr>
+<td><strong>Directory Traversal</strong></td>
+<td>File Path Traversal</td>
+<td>Free</td>
+<td><a href="https://portswigger.net/web-security/file-path-traversal">Start Lab</a></td>
+</tr>
+<tr>
+<td><strong>Authentication &amp; Logic</strong></td>
+<td>Bypassing Controls</td>
+<td>Free</td>
+<td><a href="https://portswigger.net/web-security/authentication">Start Lab</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>HackingHub Labs (Web App)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mission Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hands-On Web Exploitation Course</strong></td>
+<td>Advanced</td>
+<td>Various Web Vulns</td>
+<td>Paid</td>
+<td><a href="https://hackinghub.io/courses">Course Link</a></td>
+</tr>
+<tr>
+<td><strong>Nuclei Masterclass</strong></td>
+<td>Advanced</td>
+<td>Vulnerability Scanning</td>
+<td>Paid</td>
+<td><a href="https://hackinghub.io/courses">Course Link</a></td>
+</tr>
+<tr>
+<td><strong>Blind XSS Masterclass</strong></td>
+<td>Advanced</td>
+<td>XSS</td>
+<td>Paid</td>
+<td><a href="https://hackinghub.io/courses">Course Link</a></td>
+</tr>
+<tr>
+<td><strong>Web App Mission 1</strong></td>
+<td>Easy</td>
+<td>Common Web Vulns</td>
+<td>Free</td>
+<td><a href="https://hackinghub.io/missions">Start Mission</a></td>
+</tr>
+<tr>
+<td><strong>Web App Mission 2</strong></td>
+<td>Medium</td>
+<td>Advanced Web Vulns</td>
+<td>Free</td>
+<td><a href="https://hackinghub.io/missions">Start Mission</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>HackTheBox Labs (Web App)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Horizontall</strong></td>
+<td>Easy</td>
+<td>Strapi CMS</td>
+<td>VIP</td>
+<td><a href="https://app.hackthebox.com/machines/Horizontall">HTB Link</a></td>
+</tr>
+<tr>
+<td><strong>Pressed</strong></td>
+<td>Hard</td>
+<td>WordPress/XML-RPC</td>
+<td>VIP</td>
+<td><a href="https://app.hackthebox.com/machines/Pressed">HTB Link</a></td>
+</tr>
+</tbody>
+</table>
+<h3>03 // Network Security &amp; Pivoting</h3>
+<p><em>Focus: Recon, Lateral Movement, Tunneling. (Requires Lab Setup)</em></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Setup</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>WinterMute 1</strong></td>
+<td><strong>Best for Pivoting.</strong> Dual-VM lab.</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/wintermute-1,175/">Download</a></td>
+</tr>
+<tr>
+<td><strong>myHouse7</strong></td>
+<td>Docker/Subnet pivoting.</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/myhouse7,466/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Wpwn 1</strong></td>
+<td>Dual NICs designed for pivoting.</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/wpwn-1,537/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Symfonos Series</strong></td>
+<td>Good for internal service chains.</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/?q=symfonos">Download</a></td>
+</tr>
+<tr>
+<td><strong>Metasploitable 3</strong></td>
+<td>Setup as dual-homed target.</td>
+<td>Free</td>
+<td><a href="https://github.com/rapid7/metasploitable3">GitHub</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>TryHackMe Labs (Pivoting)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Room Name</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Wreath</strong></td>
+<td>Full Pivoting Network (Must Do)</td>
+<td>Free*</td>
+<td><a href="https://tryhackme.com/room/wreath">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Pivoting</strong></td>
+<td>Proxychains, sshuttle, Chisel</td>
+<td>Paid</td>
+<td><a href="https://tryhackme.com/room/pivoting">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Lateral Movement</strong></td>
+<td>Moving through Windows</td>
+<td>Paid</td>
+<td><a href="https://tryhackme.com/room/lateralmovement">THM Link</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>HackMyVM Labs (Pivoting)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>WinterMute</strong></td>
+<td>Hard</td>
+<td>(Clone of VulnHub Lab)</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=WinterMute">HMV Link</a></td>
+</tr>
+<tr>
+<td><strong>Unbaked Pie</strong></td>
+<td>Medium</td>
+<td>Docker Pivoting</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=UnbakedPie">HMV Link</a></td>
+</tr>
+<tr>
+<td><strong>Machine</strong></td>
+<td>Hard</td>
+<td>Internal Network</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=Machine">HMV Link</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>HackTheBox Labs (Pivoting)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Reddish</strong></td>
+<td>Insane</td>
+<td>Chisel/Socat Pivoting</td>
+<td>VIP</td>
+<td><a href="https://app.hackthebox.com/machines/Reddish">HTB Link</a></td>
+</tr>
+<tr>
+<td><strong>Vault</strong></td>
+<td>Medium</td>
+<td>SSH Tunneling</td>
+<td>VIP</td>
+<td><a href="https://app.hackthebox.com/machines/Vault">HTB Link</a></td>
+</tr>
+</tbody>
+</table>
+<h3>04 // Exploit Development</h3>
+<p><em>Focus: Stack Buffer Overflow.</em></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Brainpan 1</strong></td>
+<td><strong>The King of BoF.</strong> Do this until you dream in hex.</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/brainpan-1,51/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Brainpan 2</strong></td>
+<td>Advanced Binary Exploitation.</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/brainpan-2,56/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Stack Overflows for Beginners</strong></td>
+<td>Linear progression BoF.</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/stack-overflows-for-beginners-101,659/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Smasher</strong></td>
+<td>Web to Buffer Overflow.</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/smasher-1,398/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Buffer Overflow Prep</strong></td>
+<td>Tib3rius Room (TryHackMe).</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/bufferoverflowprep">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Gatekeeper</strong></td>
+<td>BoF Practice.</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/gatekeeper">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Intro To Pwntools</strong></td>
+<td>Scripting Exploits.</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/introtopwntools">THM Link</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>TryHackMe Labs (Exploit Dev)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Room Name</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Buffer Overflow Prep</strong></td>
+<td>OSCP Style Stack Overflow</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/bufferoverflowprep">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Gatekeeper</strong></td>
+<td>Binary Exploitation</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/gatekeeper">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Brainpan</strong></td>
+<td>THM Port of VulnHub Machine</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/brainpan">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Sudo Buffer Overflow</strong></td>
+<td>CVE-2019-18634</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/sudovulnsbof">THM Link</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>HackMyVM Labs (Exploit Dev)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Buffer</strong></td>
+<td>Medium</td>
+<td>Stack Overflow</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=Buffer">HMV Link</a></td>
+</tr>
+<tr>
+<td><strong>Overflow</strong></td>
+<td>Medium</td>
+<td>Binary Exploitation</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=Overflow">HMV Link</a></td>
+</tr>
+<tr>
+<td><strong>Brainpan</strong></td>
+<td>Hard</td>
+<td>(Clone/Similar)</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=Brainpan">HMV Link</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>HackTheBox Labs (Exploit Dev)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>October</strong></td>
+<td>Medium</td>
+<td>Buffer Overflow (ASLR/NX)</td>
+<td>VIP</td>
+<td><a href="https://app.hackthebox.com/machines/October">HTB Link</a></td>
+</tr>
+<tr>
+<td><strong>Overflow</strong></td>
+<td>Hard</td>
+<td>Buffer Overflow</td>
+<td>VIP</td>
+<td><a href="https://app.hackthebox.com/machines/Overflow">HTB Link</a></td>
+</tr>
+</tbody>
+</table>
+<h3>05 // Post-Exploitation &amp; Privilege Escalation</h3>
+<p><em>Focus: Linux PrivEsc, Cron jobs, SUID, Kernel exploits.</em></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lin.Security</strong></td>
+<td>Dedicated PrivEsc Practice.</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/linsecurity-1,244/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Escalate_Linux 1</strong></td>
+<td>12+ Methods of Escalation.</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/escalate_linux-1,323/">Download</a></td>
+</tr>
+<tr>
+<td><strong>DC-1</strong></td>
+<td>SUID Abuse.</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/dc-1,292/">Download</a></td>
+</tr>
+<tr>
+<td><strong>DC-2</strong></td>
+<td>Restricted Shell.</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/dc-2,311/">Download</a></td>
+</tr>
+<tr>
+<td><strong>DC-3</strong></td>
+<td>Kernel Exploit.</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/dc-3,312/">Download</a></td>
+</tr>
+<tr>
+<td><strong>DC-4</strong></td>
+<td>Sudo Abuse.</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/dc-4,313/">Download</a></td>
+</tr>
+<tr>
+<td><strong>DC-5</strong></td>
+<td>Screen Exploit.</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/dc-5,314/">Download</a></td>
+</tr>
+<tr>
+<td><strong>DC-6</strong></td>
+<td>Script Abuse.</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/dc-6,315/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Tommy Boy 1</strong></td>
+<td>Sudo Abuse.</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/tommy-boy-1,157/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Temple of Doom</strong></td>
+<td>Node.js / Serialization.</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/temple-of-doom-1,243/">Download</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>TryHackMe Labs (PrivEsc)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Room Name</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Linux PrivEsc</strong></td>
+<td>Full Linux Escalation Course</td>
+<td>Paid</td>
+<td><a href="https://tryhackme.com/room/linuxprivesc">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Windows PrivEsc</strong></td>
+<td>Full Windows Escalation Course</td>
+<td>Paid</td>
+<td><a href="https://tryhackme.com/room/windows10privesc">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>PrivEsc Arena</strong></td>
+<td>Multi-vector Practice</td>
+<td>Paid</td>
+<td><a href="https://tryhackme.com/room/linuxprivescarena">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Post-Exploitation Basics</strong></td>
+<td>Mimikatz, Bloodhound, Powerview</td>
+<td>Paid</td>
+<td><a href="https://tryhackme.com/room/postexploit">THM Link</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>HackMyVM Labs (PrivEsc)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PrivEsc</strong></td>
+<td>Medium</td>
+<td>Multi-vector Escalation</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=PrivEsc">HMV Link</a></td>
+</tr>
+<tr>
+<td><strong>Escalate</strong></td>
+<td>Medium</td>
+<td>SUID/Sudo Abuse</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=Escalate">HMV Link</a></td>
+</tr>
+<tr>
+<td><strong>Toxin</strong></td>
+<td>Medium</td>
+<td>Kernel Exploits</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=Toxin">HMV Link</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>HackingHub Labs (PrivEsc)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mission Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Linux for Hackers Course</strong></td>
+<td>Intermediate</td>
+<td>Linux Skills</td>
+<td>Paid</td>
+<td><a href="https://hackinghub.io/courses">Course Link</a></td>
+</tr>
+<tr>
+<td><strong>PrivEsc Mission</strong></td>
+<td>Medium</td>
+<td>Linux PrivEsc</td>
+<td>Free</td>
+<td><a href="https://hackinghub.io/missions">Start Mission</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>HackTheBox Labs (PrivEsc)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Jeeves</strong></td>
+<td>Medium</td>
+<td>Windows/RottenPotato</td>
+<td>VIP</td>
+<td><a href="https://app.hackthebox.com/machines/Jeeves">HTB Link</a></td>
+</tr>
+<tr>
+<td><strong>Return</strong></td>
+<td>Easy</td>
+<td>Windows/Server Operators</td>
+<td>VIP</td>
+<td><a href="https://app.hackthebox.com/machines/Return">HTB Link</a></td>
+</tr>
+</tbody>
+</table>
+<h3>06 // Active Directory &amp; Red Teaming</h3>
+<p><em>Focus: Kerberoasting, AS-REP, Domain Dominance.</em></p>
+<blockquote>
+<p><strong>WARNING:</strong> VulnHub is weak for AD. Use these resources instead.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Resource Name</th>
+<th>Type</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><a href="https://github.com/Orange-Cyberdefense/GOAD">GOAD</a></strong></td>
+<td>Full Lab</td>
+<td>Free</td>
+<td><a href="https://github.com/Orange-Cyberdefense/GOAD">GitHub</a></td>
+</tr>
+<tr>
+<td><strong><a href="https://vulnlab.com/">VulnLab</a></strong></td>
+<td>Cloud Lab</td>
+<td>Paid</td>
+<td><a href="https://vulnlab.com/">Website</a></td>
+</tr>
+<tr>
+<td><strong>Metasploitable 3</strong></td>
+<td>Local Lab</td>
+<td>Free</td>
+<td><a href="https://github.com/rapid7/metasploitable3">GitHub</a></td>
+</tr>
+<tr>
+<td><strong>HTB ProLabs</strong></td>
+<td>Cloud Lab</td>
+<td>Paid</td>
+<td><a href="https://www.hackthebox.com/hacker/pro-labs">Website</a></td>
+</tr>
+<tr>
+<td><strong>Dante</strong></td>
+<td>Pro Lab</td>
+<td>Paid</td>
+<td><a href="https://app.hackthebox.com/prolabs/Dante">HTB Link</a></td>
+</tr>
+<tr>
+<td><strong>RastaLabs</strong></td>
+<td>Pro Lab</td>
+<td>Paid</td>
+<td><a href="https://app.hackthebox.com/prolabs/RastaLabs">HTB Link</a></td>
+</tr>
+<tr>
+<td><strong>Offshore</strong></td>
+<td>Pro Lab</td>
+<td>Paid</td>
+<td><a href="https://app.hackthebox.com/prolabs/Offshore">HTB Link</a></td>
+</tr>
+<tr>
+<td><strong>Zephyr</strong></td>
+<td>Pro Lab</td>
+<td>Paid</td>
+<td><a href="https://app.hackthebox.com/prolabs/Zephyr">HTB Link</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>TryHackMe Labs (Active Directory)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Room Name</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Active Directory Basics</strong></td>
+<td>AD Fundamentals</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/activedirectorybasics">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Attacktive Directory</strong></td>
+<td>Kerberos, Impacket, Domain Admin</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/attacktivedirectory">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Breaching Active Directory</strong></td>
+<td>Initial Access in AD</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/breachingad">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Lateral Movement in AD</strong></td>
+<td>Spreading through the Domain</td>
+<td>Paid</td>
+<td><a href="https://tryhackme.com/room/lateralmovement">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Post-Exploitation Basics</strong></td>
+<td>Persistence &amp; Looting</td>
+<td>Paid</td>
+<td><a href="https://tryhackme.com/room/postexploit">THM Link</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>HackMyVM Labs (Active Directory)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AD</strong></td>
+<td>Hard</td>
+<td>Basic AD Chain</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=AD">HMV Link</a></td>
+</tr>
+<tr>
+<td><strong>Domain</strong></td>
+<td>Hard</td>
+<td>Kerberos Attacks</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=Domain">HMV Link</a></td>
+</tr>
+<tr>
+<td><strong>Controller</strong></td>
+<td>Insane</td>
+<td>Full Forest Compromise</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?vm=Controller">HMV Link</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>HackingHub Labs (Active Directory)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mission Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AD Mission</strong></td>
+<td>Hard</td>
+<td>AD Exploitation</td>
+<td>Free</td>
+<td><a href="https://hackinghub.io/missions">Start Mission</a></td>
+</tr>
+<tr>
+<td><strong>AD Course</strong></td>
+<td>Advanced</td>
+<td>Full AD Compromise</td>
+<td>Paid</td>
+<td><a href="https://hackinghub.io/courses">Course Link</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>HackTheBox Labs (Active Directory)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Active</strong></td>
+<td>Easy</td>
+<td>Kerberoasting/GPP</td>
+<td>VIP</td>
+<td><a href="https://app.hackthebox.com/machines/Active">HTB Link</a></td>
+</tr>
+<tr>
+<td><strong>Blackfield</strong></td>
+<td>Hard</td>
+<td>Forensics/AD</td>
+<td>VIP</td>
+<td><a href="https://app.hackthebox.com/machines/Blackfield">HTB Link</a></td>
+</tr>
+<tr>
+<td><strong>Sauna</strong></td>
+<td>Easy</td>
+<td>AD Enumeration</td>
+<td>VIP</td>
+<td><a href="https://app.hackthebox.com/machines/Sauna">HTB Link</a></td>
+</tr>
+<tr>
+<td><strong>Monteverde</strong></td>
+<td>Medium</td>
+<td>Azure AD Traits</td>
+<td>VIP</td>
+<td><a href="https://app.hackthebox.com/machines/Monteverde">HTB Link</a></td>
+</tr>
+<tr>
+<td><strong>Sizzle</strong></td>
+<td>Hard</td>
+<td>Deep AD</td>
+<td>VIP</td>
+<td><a href="https://app.hackthebox.com/machines/Sizzle">HTB Link</a></td>
+</tr>
+</tbody>
+</table>
+<h3>07 // Malware Analysis</h3>
+<p><strong>TryHackMe Labs (Malware Analysis)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Room Name</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>History of Malware</strong></td>
+<td>Intro to Malware</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/historyofmalware">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>MAL: Malware Introductory</strong></td>
+<td>Basic Concepts</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/malmalintroductory">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Basic Malware RE</strong></td>
+<td>Reversing Fundamentals</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/basicmalwarere">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>MAL: Researching</strong></td>
+<td>Analysis &amp; Research</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/malresearching">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Mobile Malware Analysis</strong></td>
+<td>Android/iOS Malware</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/mma">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Carnage</strong></td>
+<td>C2 Simulation</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/c2carnage">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Dunkle Materie</strong></td>
+<td>Packed Malware</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/dunklematerieptxc9">THM Link</a></td>
+</tr>
+</tbody>
+</table>
+<h3>08 // Reverse Engineering</h3>
+<p><strong>TryHackMe Labs (Reverse Engineering)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Room Name</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Intro to x86-64</strong></td>
+<td>Assembly Basics</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/introtox8664">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Windows x64 Assembly</strong></td>
+<td>Windows Assembly</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/win64assembly">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Reverse Engineering</strong></td>
+<td>RE Fundamentals</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/reverseengineering">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Reversing ELF</strong></td>
+<td>Linux ELF Binaries</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/reverselfiles">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>JVM Reverse Engineering</strong></td>
+<td>Java Bytecode</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/jvmreverseengineering">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>CC: Radare2</strong></td>
+<td>Radare2 Tool</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/ccradare2">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>CC: Ghidra</strong></td>
+<td>Ghidra Tool</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/ccghidra">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Aster</strong></td>
+<td>Decompiling Python</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/aster">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Classic Passwd</strong></td>
+<td>Binary Reversing</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/classicpasswd">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>REloaded</strong></td>
+<td>Various Challenges</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/reloaded">THM Link</a></td>
+</tr>
+</tbody>
+</table>
+<h3>09 // Hard CTF / Challenges</h3>
+<p><strong>VulnHub Labs (Hard CTF)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Empire: Breakout</strong></td>
+<td>Hard</td>
+<td>Adv. PrivEsc</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/empire-breakout,181/">Download</a></td>
+</tr>
+<tr>
+<td><strong>doubletrouble: 1</strong></td>
+<td>Hard</td>
+<td>Misconfigs/PrivEsc</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/doubletrouble-1,162/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Vikings: 1</strong></td>
+<td>Hard</td>
+<td>Lateral Movement</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/vikings-1,208/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Hacksudo: FOG</strong></td>
+<td>Hard</td>
+<td>Web/Linux PrivEsc</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/hacksudo-fog,732/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Hacksudo: Thor</strong></td>
+<td>Hard</td>
+<td>Unique PrivEsc</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/hacksudo-thor,733/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Metasploitable 3</strong></td>
+<td>Hard</td>
+<td>Windows Exploit</td>
+<td>Free</td>
+<td><a href="https://github.com/rapid7/metasploitable3">GitHub</a></td>
+</tr>
+<tr>
+<td><strong>SickOS 1.2</strong></td>
+<td>Hard</td>
+<td>Masterful Exploitation</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/sickos-12,144/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Tr0ll 2</strong></td>
+<td>Hard</td>
+<td>Deep Exploitation</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/tr0ll-2,107/">Download</a></td>
+</tr>
+<tr>
+<td><strong>Temple of Doom</strong></td>
+<td>Hard</td>
+<td>Obscure Puzzles</td>
+<td>Free</td>
+<td><a href="https://www.vulnhub.com/entry/temple-of-doom-1,243/">Download</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>HackMyVM Labs (Hard CTF)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Insane</strong></td>
+<td>Insane</td>
+<td>Complex Challenges</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?difficulty=insane">HMV Link</a></td>
+</tr>
+<tr>
+<td><strong>Hard</strong></td>
+<td>Hard</td>
+<td>Advanced Exploits</td>
+<td>Free</td>
+<td><a href="https://hackmyvm.eu/machines/machine.php?difficulty=hard">HMV Link</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>TryHackMe Labs (Hard CTF)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Room Name</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Motunui</strong></td>
+<td>Boot2Root</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/motunui">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Spring</strong></td>
+<td>Web App Hacking</td>
+<td>Paid</td>
+<td><a href="https://tryhackme.com/room/spring">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Brainpan 1</strong></td>
+<td>Buffer Overflow</td>
+<td>Paid</td>
+<td><a href="https://tryhackme.com/room/brainpan">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Borderlands</strong></td>
+<td>Boot2Root</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/borderlands">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Daily Bugle</strong></td>
+<td>CMS Exploitation</td>
+<td>Paid</td>
+<td><a href="https://tryhackme.com/room/dailybugle">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Retro</strong></td>
+<td>Boot2Root</td>
+<td>Free</td>
+<td><a href="https://tryhackme.com/room/retro">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Jeff</strong></td>
+<td>Boot2Root</td>
+<td>Paid</td>
+<td><a href="https://tryhackme.com/room/jeff">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Iron Corp</strong></td>
+<td>Web/Linux Exploit</td>
+<td>Paid</td>
+<td><a href="https://tryhackme.com/room/ironcorp">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Ra</strong></td>
+<td>AD/Internal Network</td>
+<td>Paid</td>
+<td><a href="https://tryhackme.com/room/ra">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Internal</strong></td>
+<td>Pivoting/AD</td>
+<td>Paid</td>
+<td><a href="https://tryhackme.com/room/internal">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>Squid Game</strong></td>
+<td>Malware/RE</td>
+<td>Paid</td>
+<td><a href="https://tryhackme.com/room/squidgameroom">THM Link</a></td>
+</tr>
+<tr>
+<td><strong>VulnNet: dotjar</strong></td>
+<td>Java Deserialization</td>
+<td>Paid</td>
+<td><a href="https://tryhackme.com/room/vulnnetdotjar">THM Link</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>HackTheBox Labs (Hard CTF)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Machine Name</th>
+<th>Difficulty</th>
+<th>Focus</th>
+<th>Cost</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>All Hard Machines</strong></td>
+<td>Hard</td>
+<td>Various</td>
+<td>VIP</td>
+<td><a href="https://app.hackthebox.com/machines?difficulty=Hard">HTB Link</a></td>
+</tr>
+<tr>
+<td><strong>All Insane Machines</strong></td>
+<td>Insane</td>
+<td>Various</td>
+<td>VIP</td>
+<td><a href="https://app.hackthebox.com/machines?difficulty=Insane">HTB Link</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Recommended Progression</h2>
+<pre><code>Phase 1  Enumeration fundamentals        10-15 machines
+Phase 2  Web exploitation                PortSwigger + 10 machines
+Phase 3  Linux/Windows privilege paths   10-15 machines
+Phase 4  Pivoting and internal networks  3-5 multi-host labs
+Phase 5  Active Directory                1 full lab + guided paths
+Phase 6  Mock engagements                Timed, no walkthroughs
+Phase 7  Reporting                       Rebuild evidence and remediation
+</code></pre>
+<p>For each phase, use three passes:</p>
+<ol>
+<li><strong>Learn:</strong> references are allowed; understand every step.</li>
+<li><strong>Reproduce:</strong> repeat from a clean snapshot using only your notes.</li>
+<li><strong>Validate:</strong> solve a comparable target without a walkthrough.</li>
+</ol>
+<h2>Lab Tracking Template</h2>
+<pre><code># Target Name
+
+## Scope
+- Platform:
+- Target address:
+- Authorization/lab rules:
+
+## Enumeration
+- Exposed services:
+- Web technologies:
+- High-value observations:
+
+## Hypotheses
+1. Observation -&gt; possible weakness -&gt; validation step
+2. Observation -&gt; possible weakness -&gt; validation step
+
+## Foothold
+- Entry point:
+- Evidence:
+- Security context:
+
+## Privilege Escalation
+- Misconfiguration or vulnerability:
+- Validation:
+- Result:
+
+## Lessons &amp; Remediation
+- What I missed:
+- What I would automate:
+- How a defender should fix or detect this path:
+</code></pre>
+<h2>Operational Rules</h2>
+<ul>
+<li>Time-box rabbit holes and return to enumeration.</li>
+<li>Keep commands beside their outputs and timestamps.</li>
+<li>Separate facts, hypotheses, and confirmed findings.</li>
+<li>Revert vulnerable machines after every exercise.</li>
+<li>Do not publish platform flags, credentials, or prohibited exam material.</li>
+<li>Write remediation while the technical evidence is still fresh.</li>
+</ul>
+<h2>Complete Arsenal &amp; Attribution</h2>
+<p>This article is a study-oriented map derived from the curated machine and resource collection maintained by <strong>N1NJ10</strong>. Availability, pricing, and platform access can change, so consult the upstream repository for the complete list and current links:</p>
+<p><strong><a href="https://github.com/N1NJ10/Offsec-Practice-Labs">Open N1NJ10/Offsec-Practice-Labs on GitHub</a></strong></p>
+<blockquote>
+<p>A certificate is the checkpoint. The real objective is a methodology you can reproduce, defend, and explain.</p>
+</blockquote>
+]]></content>
+    <author>
+      <name>Prosox0x0</name>
+    </author>
+    <category term="Labs"></category>
+  </entry>
   <entry>
     <title>Inside a Modern Cybercrime Chain: From Initial Access to Impact</title>
     <link href="https://xmoustafa.github.io/posts/inside-a-modern-cybercrime-chain/" rel="alternate" type="text/html"/>
@@ -179,30 +2161,6 @@
     <category term="Red Team"></category>
   </entry>
   <entry>
-    <title>A Repeatable Method for Solving CTF Challenges</title>
-    <link href="https://xmoustafa.github.io/posts/ctf-solving-method/" rel="alternate" type="text/html"/>
-    <id>https://xmoustafa.github.io/posts/ctf-solving-method/</id>
-    <published>2026-07-16T00:00:00.000Z</published>
-    <updated>2026-07-16T00:00:00.000Z</updated>
-    <summary>A simple CTF workflow built around enumeration, hypotheses, evidence, and useful notes.</summary>
-    <content type="html"><![CDATA[<h1>A Repeatable CTF Method</h1>
-<p>CTF challenges reward technical knowledge, but a consistent method is often more valuable than memorizing tricks.</p>
-<h2>Enumerate Before Exploiting</h2>
-<p>Start by recording what the challenge gives you: files, services, source code, metadata, error messages, or unusual behavior. For web challenges, map routes, parameters, roles, and state changes. For binaries, identify architecture, protections, strings, imports, and input paths.</p>
-<h2>Turn Observations into Hypotheses</h2>
-<p>Write down what each clue might mean and design the smallest test that could confirm or reject it. This prevents random tool switching and makes failed attempts useful.</p>
-<h2>Keep a Live Notebook</h2>
-<p>Capture commands, offsets, requests, decoded values, and why an approach failed. Good notes make it easier to return after a break and form the foundation of a clear writeup.</p>
-<h2>Extract the Lesson</h2>
-<p>After finding the flag, identify the underlying concept. Was the key insight weak access control, unsafe parsing, a cryptographic assumption, memory corruption, or an unexpected code path?</p>
-<p><strong>The flag proves completion. The explanation proves understanding.</strong></p>
-]]></content>
-    <author>
-      <name>Prosox0x0</name>
-    </author>
-    <category term="CTFs"></category>
-  </entry>
-  <entry>
     <title>Building a Safe Malware Analysis Lab</title>
     <link href="https://xmoustafa.github.io/posts/building-a-safe-analysis-lab/" rel="alternate" type="text/html"/>
     <id>https://xmoustafa.github.io/posts/building-a-safe-analysis-lab/</id>
@@ -225,39 +2183,5 @@
       <name>Prosox0x0</name>
     </author>
     <category term="Labs"></category>
-  </entry>
-  <entry>
-    <title>From Raw Notes to a Security Writeup People Can Use</title>
-    <link href="https://xmoustafa.github.io/posts/writing-security-writeups/" rel="alternate" type="text/html"/>
-    <id>https://xmoustafa.github.io/posts/writing-security-writeups/</id>
-    <published>2026-07-14T00:00:00.000Z</published>
-    <updated>2026-07-14T00:00:00.000Z</updated>
-    <summary>A practical structure for turning technical investigation notes into clear, reproducible, and responsible security writeups.</summary>
-    <content type="html"><![CDATA[<h1>Writing Useful Security Writeups</h1>
-<p>A strong writeup is more than a record of commands. It explains the problem, preserves the reasoning, and helps another person reproduce the result safely.</p>
-<h2>Lead with the Outcome</h2>
-<p>Begin with a short summary: what was tested, what was discovered, and why it matters. Readers should understand the security impact before reaching the technical detail.</p>
-<h2>Preserve the Investigation</h2>
-<p>Organize evidence in the order that makes the logic clear:</p>
-<ol>
-<li>Scope and assumptions</li>
-<li>Initial observation</li>
-<li>Tests performed</li>
-<li>Evidence collected</li>
-<li>Root cause</li>
-<li>Security impact</li>
-<li>Remediation guidance</li>
-</ol>
-<p>Screenshots and code snippets should support the explanation, not replace it. Remove secrets, tokens, personal information, and unnecessary exploit details before publishing.</p>
-<h2>Explain Failed Paths</h2>
-<p>Short notes about failed hypotheses can be valuable when they clarify why the final approach worked. They also demonstrate method rather than luck.</p>
-<h2>End with a Defensive Lesson</h2>
-<p>The best security writing helps readers recognize the pattern elsewhere. Connect the specific finding to a broader principle such as server-side authorization, input validation, trust boundaries, or behavioral detection.</p>
-<p><strong>A useful writeup does not merely show what worked—it makes the reasoning transferable.</strong></p>
-]]></content>
-    <author>
-      <name>Prosox0x0</name>
-    </author>
-    <category term="Writeups"></category>
   </entry>
 </feed>
