@@ -5,7 +5,7 @@
   <link href="https://xmoustafa.github.io/" rel="alternate" type="text/html"/>
   <link href="https://xmoustafa.github.io/atom.xml" rel="self" type="application/atom+xml"/>
   <id>https://xmoustafa.github.io/</id>
-  <updated>2026-07-22T21:32:07.623Z</updated>
+  <updated>2026-07-22T21:53:12.195Z</updated>
   <language>en</language>
   <entry>
     <title>eCPPTv3, OSCP & CPTS Preparation Arsenal</title>
@@ -1990,96 +1990,6 @@ Phase 7  Reporting                       Rebuild evidence and remediation
     <category term="Labs"></category>
   </entry>
   <entry>
-    <title>Inside a Modern Cybercrime Chain: From Initial Access to Impact</title>
-    <link href="https://xmoustafa.github.io/posts/inside-a-modern-cybercrime-chain/" rel="alternate" type="text/html"/>
-    <id>https://xmoustafa.github.io/posts/inside-a-modern-cybercrime-chain/</id>
-    <published>2026-07-21T00:00:00.000Z</published>
-    <updated>2026-07-21T00:00:00.000Z</updated>
-    <summary>A defender-focused walkthrough of how modern cybercrime operations move from social engineering to persistence, data theft, and monetization.</summary>
-    <content type="html"><![CDATA[<h1>Inside a Modern Cybercrime Chain</h1>
-<p>Cybercrime rarely begins with a dramatic technical breakthrough. More often, it starts with something ordinary: a convincing email, a reused password, an exposed service, or a rushed employee approving the wrong request. The initial weakness may look small, but an organized threat actor can turn it into a chain of access, persistence, discovery, theft, and financial impact.</p>
-<p>This article follows that chain from a defender's perspective. The goal is not to reproduce an attack, but to understand the evidence each stage leaves behind and where a security team can break the sequence.</p>
-<h2>Stage 1: Initial Access</h2>
-<p>Phishing remains effective because it targets context as much as technology. A message that imitates a supplier, delivery service, cloud platform, or internal department may push a victim toward a fake sign-in page or malicious attachment.</p>
-<p>Other common entry points include:</p>
-<ul>
-<li>Credentials exposed in previous breaches</li>
-<li>Public-facing systems missing security updates</li>
-<li>Weak remote-access controls</li>
-<li>Stolen session tokens</li>
-<li>Misconfigured cloud services</li>
-</ul>
-<p>For defenders, the important question is not only <em>how did the message look?</em> It is <em>what changed immediately afterward?</em> New login geography, unfamiliar devices, impossible travel, unusual OAuth consent, and unexpected mailbox rules can reveal the first successful step.</p>
-<h2>Stage 2: Establishing Persistence</h2>
-<p>After gaining access, an intruder wants a way back. Persistence may be created through a new account, an added authentication method, a scheduled task, a startup entry, a remote-management utility, or a modified cloud permission.</p>
-<p>These actions often blend into legitimate administration. That makes baseline awareness essential. Security teams should know which tools, accounts, and persistence mechanisms are normal in their environment. A technically valid action performed by the wrong identity, at the wrong time, from the wrong host is still suspicious.</p>
-<blockquote>
-<p>A useful detection does not ask only whether an action is allowed. It asks whether the action makes sense in context.</p>
-</blockquote>
-<h2>Stage 3: Discovery and Lateral Movement</h2>
-<p>The attacker then maps the environment: users, groups, endpoints, shares, security products, backup systems, and high-value applications. In an enterprise network, identity becomes the map. Privileged groups, service accounts, remote sessions, and trust relationships show where the operation can expand.</p>
-<p>Defenders may observe bursts of directory queries, access to administrative shares, remote-service creation, authentication attempts across many systems, or command execution from a workstation that normally performs none of those tasks.</p>
-<p>No single event always proves malicious activity. Correlation provides the signal. A new login followed by discovery commands, credential access, and remote connections creates a much stronger case than any isolated alert.</p>
-<h2>Stage 4: Collection and Exfiltration</h2>
-<p>Before information leaves the network, it is often gathered and staged. Documents may be copied into temporary directories, compressed into archives, renamed, or transferred through tools that also have legitimate business uses.</p>
-<p>High-value evidence includes:</p>
-<ul>
-<li>Unusual archive creation on endpoints</li>
-<li>Large reads from sensitive file shares</li>
-<li>New outbound destinations</li>
-<li>Transfers outside normal working patterns</li>
-<li>Command-line use of synchronization or storage utilities</li>
-<li>Endpoint security controls being disabled before a transfer</li>
-</ul>
-<p>Data-loss prevention can help, but visibility across identity, endpoint, network, and cloud logs is what allows an investigation to reconstruct the full sequence.</p>
-<h2>Stage 5: Monetization and Impact</h2>
-<p>The final objective varies. Stolen access may be sold. Payment instructions may be replaced in a business-email-compromise scheme. Sensitive information may be extorted. Systems may be encrypted, disrupted, or used as infrastructure for another campaign.</p>
-<p>The visible incident is often only the final stage. By the time an organization sees fraud or ransomware, the attacker may have been operating quietly for days or weeks. Effective response therefore requires looking backward from impact and rebuilding the timeline.</p>
-<h2>Breaking the Chain</h2>
-<p>Organizations do not need a perfect control at every stage. They need multiple opportunities to interrupt the operation:</p>
-<ol>
-<li>Use phishing-resistant multifactor authentication where possible.</li>
-<li>Patch internet-facing systems and reduce unnecessary exposure.</li>
-<li>Monitor changes to identities, authentication methods, and privileges.</li>
-<li>Centralize endpoint, identity, cloud, and network telemetry.</li>
-<li>Alert on behavioral sequences, not only isolated indicators.</li>
-<li>Protect backups with separate credentials and tested recovery procedures.</li>
-<li>Practice incident response before a real crisis begins.</li>
-</ol>
-<h2>Final Thought</h2>
-<p>Cybercrime succeeds by connecting small weaknesses into a reliable process. Defense improves when we reverse that logic: connect small signals into evidence, connect evidence into a timeline, and use that timeline to contain the threat before it reaches its objective.</p>
-<p><strong>Find the signal. Trace the behavior. Turn uncertainty into evidence.</strong></p>
-]]></content>
-    <author>
-      <name>Prosox0x0</name>
-    </author>
-    <category term="DFIR"></category>
-  </entry>
-  <entry>
-    <title>A Practical First Pass for Reverse Engineering Windows Binaries</title>
-    <link href="https://xmoustafa.github.io/posts/reverse-engineering-first-pass/" rel="alternate" type="text/html"/>
-    <id>https://xmoustafa.github.io/posts/reverse-engineering-first-pass/</id>
-    <published>2026-07-20T00:00:00.000Z</published>
-    <updated>2026-07-20T00:00:00.000Z</updated>
-    <summary>A repeatable first-pass workflow for understanding an unfamiliar Windows executable without getting lost in details.</summary>
-    <content type="html"><![CDATA[<h1>A Practical First Pass</h1>
-<p>Opening an unfamiliar binary in a disassembler can feel like walking into a city without a map. The fastest way to make progress is not to read every instruction. It is to build a high-level model first, then follow the evidence.</p>
-<h2>Start with Context</h2>
-<p>Record the file hash, size, compile time, architecture, signature status, and section layout. Tools such as Detect It Easy, PE-bear, and PEStudio quickly reveal whether the executable is packed, unusually structured, or importing suspicious capabilities.</p>
-<p>Strings and imports provide early hypotheses. Networking functions may suggest communication behavior, while process-manipulation APIs may point toward injection or persistence. These are leads—not conclusions.</p>
-<h2>Build a Behavioral Map</h2>
-<p>In Ghidra or IDA Pro, identify the entry point, major branches, referenced strings, and functions that touch files, the registry, processes, or the network. Rename functions as their purpose becomes clearer. Good names turn a wall of assembly into a navigable model.</p>
-<p>Dynamic analysis should then validate the static theory inside an isolated lab. Observe process creation, file writes, registry changes, and network attempts. The strongest findings connect a code path to an observed behavior.</p>
-<h2>Keep Evidence, Not Guesses</h2>
-<p>A useful first pass ends with a short list of confirmed capabilities, open questions, and the next functions worth investigating. Reverse engineering becomes manageable when every conclusion can be traced back to evidence.</p>
-<p><strong>Map first. Validate second. Go deep only where the evidence leads.</strong></p>
-]]></content>
-    <author>
-      <name>Prosox0x0</name>
-    </author>
-    <category term="Reverse"></category>
-  </entry>
-  <entry>
     <title>From Alert to Incident: A SOC Analyst's Triage Mindset</title>
     <link href="https://xmoustafa.github.io/posts/soc-alert-to-incident/" rel="alternate" type="text/html"/>
     <id>https://xmoustafa.github.io/posts/soc-alert-to-incident/</id>
@@ -2107,58 +2017,6 @@ Phase 7  Reporting                       Rebuild evidence and remediation
       <name>Prosox0x0</name>
     </author>
     <category term="SOC"></category>
-  </entry>
-  <entry>
-    <title>Bug Bounty Notes: Testing Business Logic Beyond the Scanner</title>
-    <link href="https://xmoustafa.github.io/posts/bug-bounty-business-logic/" rel="alternate" type="text/html"/>
-    <id>https://xmoustafa.github.io/posts/bug-bounty-business-logic/</id>
-    <published>2026-07-18T00:00:00.000Z</published>
-    <updated>2026-07-18T00:00:00.000Z</updated>
-    <summary>A methodology for finding business-logic vulnerabilities by understanding workflows, trust boundaries, and state changes.</summary>
-    <content type="html"><![CDATA[<h1>Testing Business Logic</h1>
-<p>Automated scanners are useful for coverage, but they rarely understand why an application exists. Business-logic vulnerabilities live in that gap between technically valid requests and unintended outcomes.</p>
-<h2>Model the Workflow</h2>
-<p>Choose one feature—registration, checkout, password recovery, invitations, or account upgrades—and write down its expected states. Identify who can perform each action, what data the server should trust, and which steps must happen in order.</p>
-<p>Then test the assumptions:</p>
-<ul>
-<li>Can a step be skipped or repeated?</li>
-<li>Can one user reference another user's object?</li>
-<li>Does changing quantity, price, role, or status affect server-side decisions?</li>
-<li>Can an expired or already-used action be replayed?</li>
-<li>Do the web interface and API enforce the same rules?</li>
-</ul>
-<h2>Prove Impact Carefully</h2>
-<p>A good proof of concept uses the minimum action necessary, stays within program rules, and clearly separates observation from impact. Capture requests, responses, account roles, and the exact state transition that should not have been possible.</p>
-<p>The most valuable report explains the broken assumption and recommends where validation belongs on the server.</p>
-<p><strong>Tools find patterns. Understanding the product finds broken trust.</strong></p>
-]]></content>
-    <author>
-      <name>Prosox0x0</name>
-    </author>
-    <category term="Bug Bounty"></category>
-  </entry>
-  <entry>
-    <title>Why Red Team Operations Begin with Rules of Engagement</title>
-    <link href="https://xmoustafa.github.io/posts/red-team-rules-of-engagement/" rel="alternate" type="text/html"/>
-    <id>https://xmoustafa.github.io/posts/red-team-rules-of-engagement/</id>
-    <published>2026-07-17T00:00:00.000Z</published>
-    <updated>2026-07-17T00:00:00.000Z</updated>
-    <summary>A concise look at how scope, safety controls, communications, and evidence make adversary simulation valuable.</summary>
-    <content type="html"><![CDATA[<h1>Rules Before Tools</h1>
-<p>A professional red team engagement begins long before the first payload or phishing simulation. It begins with a shared definition of what is authorized, what must be protected, and how the organization will respond if risk increases.</p>
-<h2>Define the Boundaries</h2>
-<p>Rules of engagement should identify in-scope systems, excluded assets, permitted techniques, testing windows, data-handling requirements, emergency contacts, and stop conditions. The team also needs a plan for sensitive discoveries that fall outside the original objective.</p>
-<h2>Protect the Organization</h2>
-<p>Realism does not remove responsibility. Production stability, customer data, safety systems, and third parties require explicit safeguards. Every high-impact action should have a reason, an owner, and a recovery path.</p>
-<h2>Preserve the Story</h2>
-<p>The final value is not a list of tools used. It is the attack path: which control failed, what evidence defenders could have seen, how far the operation progressed, and where detection or containment succeeded.</p>
-<p>Clear rules make that story trustworthy. They allow the team to test deeply without confusing effective simulation with unnecessary risk.</p>
-<p><strong>The goal is not to prove that attackers can win. It is to show where defenders can stop them.</strong></p>
-]]></content>
-    <author>
-      <name>Prosox0x0</name>
-    </author>
-    <category term="Red Team"></category>
   </entry>
   <entry>
     <title>Building a Safe Malware Analysis Lab</title>
