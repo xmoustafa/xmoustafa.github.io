@@ -4,7 +4,7 @@ published: 2026-07-15
 description: "Core design principles for an isolated analysis environment that supports observation without exposing other systems."
 tags: [Malware Analysis, Reverse Engineering]
 category: Labs
-author: Prosox0x0
+author: Moustafa Mahmoud
 draft: false
 ---
 

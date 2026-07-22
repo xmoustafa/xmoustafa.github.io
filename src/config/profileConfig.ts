@@ -36,7 +36,7 @@ export const profileConfig: ProfileConfig = {
 			url: "mailto:moustafa.abdelnaby@outlook.com",
 		},
 		{
-			name: "Discord: 1p_rootx",
+			name: "Discord",
 			icon: "fa7-brands:discord",
 			url: "https://discord.com/users/1p_rootx",
 		},

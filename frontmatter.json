@@ -1,0 +1,76 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "astro",
+  "frontMatter.content.pageFolders": [
+    {
+      "title": "Posts",
+      "path": "[[workspace]]/src/content/posts",
+      "previewPath": "/posts",
+      "trailingSlash": true,
+      "contentTypes": ["post"]
+    }
+  ],
+  "frontMatter.content.publicFolder": "[[workspace]]/public",
+  "frontMatter.content.supportedFileTypes": ["md", "mdx"],
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "post",
+      "pageBundle": false,
+      "fileType": "md",
+      "previewPath": "/posts",
+      "trailingSlash": true,
+      "fields": [
+        {
+          "title": "Title",
+          "name": "title",
+          "type": "string",
+          "single": true
+        },
+        {
+          "title": "Publishing date",
+          "name": "published",
+          "type": "datetime",
+          "default": "{{now}}",
+          "isPublishDate": true
+        },
+        {
+          "title": "Description",
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "title": "Banner image",
+          "name": "image",
+          "type": "image",
+          "isPreviewImage": true
+        },
+        {
+          "title": "Category",
+          "name": "category",
+          "type": "string",
+          "single": true
+        },
+        {
+          "title": "Tags",
+          "name": "tags",
+          "type": "tags"
+        },
+        {
+          "title": "Author",
+          "name": "author",
+          "type": "string",
+          "default": "Moustafa Mahmoud",
+          "single": true
+        },
+        {
+          "title": "Draft",
+          "name": "draft",
+          "type": "draft",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "frontMatter.preview.host": "http://localhost:3000",
+  "frontMatter.dashboard.openOnStart": false
+}

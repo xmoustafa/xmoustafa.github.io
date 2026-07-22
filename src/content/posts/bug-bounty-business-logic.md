@@ -4,7 +4,7 @@ published: 2026-07-18
 description: "A methodology for finding business-logic vulnerabilities by understanding workflows, trust boundaries, and state changes."
 tags: [Bug Bounty, Web Exploitation]
 category: Bug Bounty
-author: Prosox0x0
+author: Moustafa Mahmoud
 draft: false
 ---
 

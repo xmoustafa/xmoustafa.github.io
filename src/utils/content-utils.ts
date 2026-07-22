@@ -35,9 +35,14 @@ async function getRawSortedPosts() {
 		}
 
 		// 否则按发布日期排序
-		const dateA = new Date(a.data.published);
-		const dateB = new Date(b.data.published);
-		return dateA > dateB ? -1 : 1;
+		const dateA = new Date(a.data.published).getTime();
+		const dateB = new Date(b.data.published).getTime();
+		if (dateA !== dateB) {
+			return dateB - dateA;
+		}
+
+		// Keep posts with the same date in a predictable order.
+		return a.data.title.localeCompare(b.data.title);
 	});
 	return sorted;
 }

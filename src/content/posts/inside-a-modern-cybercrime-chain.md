@@ -4,7 +4,7 @@ published: 2026-07-21
 description: "A defender-focused walkthrough of how modern cybercrime operations move from social engineering to persistence, data theft, and monetization."
 tags: [Security Research, Threat Hunting, Malware Analysis, SOC]
 category: DFIR
-author: Prosox0x0
+author: Moustafa Mahmoud
 draft: false
 ---
 
