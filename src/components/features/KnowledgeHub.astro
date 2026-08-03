@@ -4,7 +4,7 @@ import ShareCard from "@components/features/posts/ShareCard.astro";
 import { Icon } from "astro-icon/components";
 import { profileConfig, shareConfig, siteConfig } from "../../config";
 
-interface HubLink { title: string; href: string; description?: string; icon?: string; }
+interface HubLink { title: string; href: string; description?: string; icon?: string; external?: boolean; }
 interface HubSection { title: string; description?: string; links: HubLink[]; }
 interface Props { title: string; description: string; eyebrow: string; sections: HubSection[]; share?: boolean; }
 const { title, description, eyebrow, sections, share = false } = Astro.props;
@@ -23,7 +23,7 @@ const { title, description, eyebrow, sections, share = false } = Astro.props;
 				{section.description && <p class="section-description">{section.description}</p>}
 				<div class="hub-grid">
 					{section.links.map((link, index) => (
-						<a class="hub-card" href={link.href}>
+						<a class="hub-card" href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener noreferrer" : undefined}>
 							<span class="hub-card-index">{String(index + 1).padStart(2, "0")}</span>
 							<span class="hub-card-icon"><Icon name={link.icon || "material-symbols:article-outline"} /></span>
 							<div><h3>{link.title}</h3>{link.description && <p>{link.description}</p>}</div>

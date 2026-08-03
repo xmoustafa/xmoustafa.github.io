@@ -1,17 +1,16 @@
 ---
 import KnowledgeHub from "@components/features/KnowledgeHub.astro";
-const topics = [
-	["Access Control", "access-control"],
-	["Cross-Origin Resource Sharing", "cross-origin-resource-sharing"],
-	["Cross-Site Scripting (XSS)", "cross-site-scripting"],
-	["Information Disclosure", "information-disclosure"],
-	["JSON Web Tokens (JWTs)", "json-web-tokens"],
-	["Path Traversal", "path-traversal"],
-	["Server-side Template Injection", "server-side-template-injection"],
-	["SQL Injection", "sql-injection"],
-	["Web Cache Poisoning", "web-cache-poisoning"],
-	["XXE Injection", "xxe-injection"],
-];
-const sections = [{ title: "Vulnerability Topics", description: "Choose a topic to browse its PortSwigger Academy write-ups.", links: topics.map(([title, slug]) => ({ title, href: `/academy/${slug}/`, icon: "material-symbols:bug-report-outline" })) }];
+import catalog from "../../data/portswigger-labs.json";
+
+const sections = catalog.map((group) => ({
+	title: group.name,
+	description: `Browse ${group.topics.length} topics in the official PortSwigger learning order.`,
+	links: group.topics.map((topic) => ({
+		title: topic.title,
+		href: `/academy/${topic.slug}/`,
+		description: `${topic.labs.length} labs`,
+		icon: "material-symbols:bug-report-outline",
+	})),
+}));
 ---
-<KnowledgeHub title="PortSwigger Academy Write-Ups" description="Organized notes and solutions from Web Security Academy labs." eyebrow="WEB SECURITY // PORTSWIGGER ACADEMY" sections={sections} />
+<KnowledgeHub title="PortSwigger Academy Labs" description="A structured index of official Web Security Academy topics and labs." eyebrow="WEB SECURITY // PORTSWIGGER ACADEMY" sections={sections} />
