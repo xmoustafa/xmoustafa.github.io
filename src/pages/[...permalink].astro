@@ -18,6 +18,7 @@ import {
 } from "@components/features/posts";
 import License from "@components/misc/License.astro";
 import Markdown from "@components/misc/Markdown.astro";
+import Resources from "@components/misc/Resources.astro";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
@@ -238,6 +239,7 @@ const jsonLd = {
 						<Markdown class="mb-6 markdown-content onload-animation">
 							<Content />
 						</Markdown>
+						<Resources resources={entry.data.resources} />
 						{licenseConfig.enable && (
 							<License
 								title={entry.data.title}

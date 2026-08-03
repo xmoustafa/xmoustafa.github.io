@@ -52,6 +52,7 @@ category: ''
 author: 'Moustafa Mahmoud'
 draft: false 
 lang: ''
+resources: []
 ---
 `;
 
