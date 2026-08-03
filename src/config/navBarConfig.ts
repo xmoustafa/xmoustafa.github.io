@@ -125,5 +125,38 @@ import { LinkPreset } from "../types/config";
  * 5. links 数组的顺序即为导航栏从左到右的显示顺序。
  */
 export const navBarConfig: NavBarConfig = {
-	links: [LinkPreset.Home, LinkPreset.Archive, LinkPreset.About],
+	links: [
+		LinkPreset.Home,
+		LinkPreset.Archive,
+		{
+			name: "Web Application Pentesting",
+			url: "/web-application-pentesting/",
+			icon: "material-symbols:language",
+			children: [
+				{
+					name: "PortSwigger Academy Write-Ups",
+					url: "/web-application-pentesting/portswigger-academy/",
+					icon: "material-symbols:school-outline",
+				},
+			],
+		},
+		{
+			name: "Mobile Application Pentesting",
+			url: "/mobile-application-pentesting/",
+			icon: "material-symbols:smartphone",
+			children: [
+				{
+					name: "Android",
+					url: "/mobile-application-pentesting/android/",
+					icon: "fa7-brands:android",
+				},
+				{
+					name: "iOS",
+					url: "/mobile-application-pentesting/ios/",
+					icon: "fa7-brands:apple",
+				},
+			],
+		},
+		LinkPreset.About,
+	],
 };

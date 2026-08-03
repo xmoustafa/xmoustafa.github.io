@@ -1,3 +1,5 @@
+glob: "{index.html,404.html,about/index.html,archive/index.html,atom/index.html,rss/index.html,posts/**/index.html,web-application-pentesting/**/index.html,mobile-application-pentesting/**/index.html}"
+
 exclude_selectors:
   - "span.katex"
   - "span.katex-display"

@@ -15,6 +15,7 @@ import {
 import { ReadingTime, WordCount } from "@components/features/posts/atoms";
 import License from "@components/misc/License.astro";
 import Markdown from "@components/misc/Markdown.astro";
+import Resources from "@components/misc/Resources.astro";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { getRelatedPosts, getSortedPosts } from "@utils/content-utils";
 import { hasCustomPermalink, initPostIdMap } from "@utils/permalink-utils";
@@ -343,6 +344,8 @@ const jsonLd = {
 					/>
 				)
 			}
+
+			<Resources resources={entry.data.resources} />
 
 			{
 				licenseConfig.enable && (

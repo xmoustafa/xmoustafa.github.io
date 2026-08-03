@@ -1,0 +1,54 @@
+---
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { Icon } from "astro-icon/components";
+
+interface HubLink { title: string; href: string; description?: string; icon?: string; }
+interface HubSection { title: string; description?: string; links: HubLink[]; }
+interface Props { title: string; description: string; eyebrow: string; sections: HubSection[]; }
+const { title, description, eyebrow, sections } = Astro.props;
+---
+
+<MainGridLayout title={title} description={description}>
+	<section class="knowledge-hub card-base p-6 md:p-9">
+		<header>
+			<span>{eyebrow}</span>
+			<h1>{title}</h1>
+			<p>{description}</p>
+		</header>
+		{sections.map((section) => (
+			<section class="hub-section">
+				<h2>{section.title}</h2>
+				{section.description && <p class="section-description">{section.description}</p>}
+				<div class="hub-grid">
+					{section.links.map((link) => (
+						<a class="hub-card" href={link.href}>
+							<Icon name={link.icon || "material-symbols:article-outline"} />
+							<div><h3>{link.title}</h3>{link.description && <p>{link.description}</p>}</div>
+							<Icon name="material-symbols:arrow-forward-rounded" />
+						</a>
+					))}
+				</div>
+			</section>
+		))}
+	</section>
+</MainGridLayout>
+
+<style is:global>
+	body:has(.knowledge-hub) #main-grid { grid-template-columns: minmax(0, 1fr) !important; max-width: 78rem; }
+	body:has(.knowledge-hub) #main-grid > .contents { display: none; }
+	body:has(.knowledge-hub) #swup-container { grid-column: 1 / -1 !important; }
+	.knowledge-hub > header { padding-left: 1rem; border-left: 4px solid var(--primary); margin-bottom: 2rem; }
+	.knowledge-hub > header span { color: var(--primary); font: 700 .72rem var(--font-jetbrains-mono), monospace; letter-spacing: .14em; }
+	.knowledge-hub > header h1 { margin: .3rem 0; font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900; letter-spacing: -.04em; }
+	.knowledge-hub > header p, .section-description { opacity: .68; }
+	.hub-section + .hub-section { margin-top: 2.2rem; }
+	.hub-section > h2 { margin-bottom: .25rem; font-size: 1.35rem; }
+	.hub-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; margin-top: 1rem; }
+	.hub-card { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .9rem; padding: 1rem; border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent); border-radius: .85rem; color: inherit; text-decoration: none; transition: 180ms ease; }
+	.hub-card:hover { border-color: var(--primary); background: color-mix(in srgb, var(--primary) 7%, transparent); transform: translateY(-2px); }
+	.hub-card > svg:first-child { color: var(--primary); font-size: 1.5rem; }
+	.hub-card > svg:last-child { opacity: .45; }
+	.hub-card h3 { margin: 0; font-size: .98rem; }
+	.hub-card p { margin: .25rem 0 0; opacity: .62; font-size: .82rem; }
+	@media (max-width: 700px) { .hub-grid { grid-template-columns: 1fr; } }
+</style>

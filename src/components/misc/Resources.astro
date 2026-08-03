@@ -1,0 +1,39 @@
+---
+interface Resource {
+	title: string;
+	url: string;
+	description?: string;
+}
+
+interface Props {
+	resources?: Resource[];
+}
+
+const { resources = [] } = Astro.props;
+---
+
+{
+	resources.length > 0 && (
+		<section class="resources-panel mb-6" aria-labelledby="resources-heading">
+			<h2 id="resources-heading">References &amp; Resources</h2>
+			<ul>
+				{resources.map((resource) => (
+					<li>
+						<a href={resource.url} target="_blank" rel="noopener noreferrer">
+							{resource.title}
+						</a>
+						{resource.description && <p>{resource.description}</p>}
+					</li>
+				))}
+			</ul>
+		</section>
+	)
+}
+
+<style>
+	.resources-panel { padding: 1.25rem 1.5rem; border: 1px solid color-mix(in srgb, var(--primary) 28%, transparent); border-radius: 0.9rem; background: color-mix(in srgb, var(--primary) 5%, var(--card-bg)); }
+	.resources-panel h2 { margin: 0 0 0.8rem; font-size: 1.2rem; }
+	.resources-panel ul { display: grid; gap: 0.75rem; margin: 0; padding-left: 1.15rem; }
+	.resources-panel a { color: var(--primary); font-weight: 700; }
+	.resources-panel p { margin: 0.2rem 0 0; opacity: 0.7; font-size: 0.9rem; }
+</style>
