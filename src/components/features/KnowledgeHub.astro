@@ -1,11 +1,13 @@
 ---
 import MainGridLayout from "@layouts/MainGridLayout.astro";
+import ShareCard from "@components/features/posts/ShareCard.astro";
 import { Icon } from "astro-icon/components";
+import { profileConfig, shareConfig, siteConfig } from "../../config";
 
 interface HubLink { title: string; href: string; description?: string; icon?: string; }
 interface HubSection { title: string; description?: string; links: HubLink[]; }
-interface Props { title: string; description: string; eyebrow: string; sections: HubSection[]; }
-const { title, description, eyebrow, sections } = Astro.props;
+interface Props { title: string; description: string; eyebrow: string; sections: HubSection[]; share?: boolean; }
+const { title, description, eyebrow, sections, share = false } = Astro.props;
 ---
 
 <MainGridLayout title={title} description={description}>
@@ -20,16 +22,28 @@ const { title, description, eyebrow, sections } = Astro.props;
 				<h2>{section.title}</h2>
 				{section.description && <p class="section-description">{section.description}</p>}
 				<div class="hub-grid">
-					{section.links.map((link) => (
+					{section.links.map((link, index) => (
 						<a class="hub-card" href={link.href}>
-							<Icon name={link.icon || "material-symbols:article-outline"} />
+							<span class="hub-card-index">{String(index + 1).padStart(2, "0")}</span>
+							<span class="hub-card-icon"><Icon name={link.icon || "material-symbols:article-outline"} /></span>
 							<div><h3>{link.title}</h3>{link.description && <p>{link.description}</p>}</div>
-							<Icon name="material-symbols:arrow-forward-rounded" />
+							<span class="hub-card-arrow"><Icon name="material-symbols:arrow-forward-rounded" /></span>
 						</a>
 					))}
 				</div>
 			</section>
 		))}
+		{share && shareConfig.enable && (
+			<ShareCard
+				title={title}
+				description={description}
+				pubDate="2026-08-03"
+				url={Astro.url.toString()}
+				siteTitle={siteConfig.title}
+				avatar={profileConfig.avatar}
+				class="hub-share-card mt-8 mb-0"
+			/>
+		)}
 	</section>
 </MainGridLayout>
 
@@ -37,18 +51,31 @@ const { title, description, eyebrow, sections } = Astro.props;
 	body:has(.knowledge-hub) #main-grid { grid-template-columns: minmax(0, 1fr) !important; max-width: 78rem; }
 	body:has(.knowledge-hub) #main-grid > .contents { display: none; }
 	body:has(.knowledge-hub) #swup-container { grid-column: 1 / -1 !important; }
-	.knowledge-hub > header { padding-left: 1rem; border-left: 4px solid var(--primary); margin-bottom: 2rem; }
+	.knowledge-hub { color: #17211b; border: 1px solid color-mix(in srgb, var(--primary) 38%, transparent); box-shadow: 0 18px 60px rgba(5, 25, 14, .12); }
+	.knowledge-hub > header { position: relative; padding: .25rem 0 .25rem 1.25rem; border-left: 4px solid var(--primary); margin-bottom: 2.25rem; }
 	.knowledge-hub > header span { color: var(--primary); font: 700 .72rem var(--font-jetbrains-mono), monospace; letter-spacing: .14em; }
-	.knowledge-hub > header h1 { margin: .3rem 0; font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900; letter-spacing: -.04em; }
-	.knowledge-hub > header p, .section-description { opacity: .68; }
+	.knowledge-hub > header h1 { margin: .4rem 0 .3rem; color: #101a13; font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900; letter-spacing: -.04em; line-height: 1.05; }
+	.knowledge-hub > header p, .section-description { color: #526158; }
 	.hub-section + .hub-section { margin-top: 2.2rem; }
-	.hub-section > h2 { margin-bottom: .25rem; font-size: 1.35rem; }
+	.hub-section > h2 { margin-bottom: .25rem; color: #17211b; font-size: 1.35rem; font-weight: 800; }
 	.hub-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; margin-top: 1rem; }
-	.hub-card { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .9rem; padding: 1rem; border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent); border-radius: .85rem; color: inherit; text-decoration: none; transition: 180ms ease; }
-	.hub-card:hover { border-color: var(--primary); background: color-mix(in srgb, var(--primary) 7%, transparent); transform: translateY(-2px); }
-	.hub-card > svg:first-child { color: var(--primary); font-size: 1.5rem; }
-	.hub-card > svg:last-child { opacity: .45; }
-	.hub-card h3 { margin: 0; font-size: .98rem; }
-	.hub-card p { margin: .25rem 0 0; opacity: .62; font-size: .82rem; }
+	.hub-card { position: relative; display: grid; grid-template-columns: auto auto 1fr auto; align-items: center; gap: .85rem; min-height: 5rem; padding: .85rem 1rem; border: 1px solid color-mix(in srgb, var(--primary) 28%, transparent); border-radius: .9rem; background: color-mix(in srgb, var(--primary) 3%, white); color: #17211b; text-decoration: none; overflow: hidden; transition: 180ms ease; }
+	.hub-card::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 3px; background: var(--primary); opacity: 0; transition: 180ms ease; }
+	.hub-card:hover { border-color: color-mix(in srgb, var(--primary) 72%, transparent); background: color-mix(in srgb, var(--primary) 8%, white); box-shadow: 0 10px 28px color-mix(in srgb, var(--primary) 13%, transparent); transform: translateY(-2px); }
+	.hub-card:hover::before { opacity: 1; }
+	.hub-card-index { color: color-mix(in srgb, var(--primary) 78%, #17211b); font: 700 .66rem var(--font-jetbrains-mono), monospace; letter-spacing: .08em; opacity: .72; }
+	.hub-card-icon { display: grid; place-items: center; width: 2.35rem; height: 2.35rem; border-radius: .65rem; background: color-mix(in srgb, var(--primary) 13%, transparent); color: var(--primary); font-size: 1.3rem; }
+	.hub-card-arrow { color: var(--primary); opacity: .55; transition: 180ms ease; }
+	.hub-card:hover .hub-card-arrow { opacity: 1; transform: translateX(3px); }
+	.hub-card h3 { margin: 0; color: inherit; font-size: .98rem; font-weight: 750; }
+	.hub-card p { margin: .25rem 0 0; color: #617067; font-size: .82rem; }
+	:root.dark .knowledge-hub { color: #e7f4eb; background: linear-gradient(145deg, rgba(20, 31, 24, .98), rgba(12, 22, 16, .98)) !important; border-color: color-mix(in srgb, var(--primary) 45%, transparent) !important; box-shadow: 0 22px 70px rgba(0, 0, 0, .42), inset 0 1px rgba(255, 255, 255, .025); }
+	:root.dark .knowledge-hub > header h1, :root.dark .hub-section > h2 { color: #f1faf4; }
+	:root.dark .knowledge-hub > header p, :root.dark .section-description { color: #a8b8ad; }
+	:root.dark .hub-card { color: #e7f4eb; background: rgba(255, 255, 255, .025); border-color: color-mix(in srgb, var(--primary) 30%, rgba(255, 255, 255, .08)); }
+	:root.dark .hub-card:hover { background: color-mix(in srgb, var(--primary) 10%, rgba(255, 255, 255, .025)); border-color: color-mix(in srgb, var(--primary) 72%, transparent); box-shadow: 0 12px 32px rgba(0, 0, 0, .3), 0 0 22px color-mix(in srgb, var(--primary) 9%, transparent); }
+	:root.dark .hub-card-index { color: #7ee29a; }
+	:root.dark .hub-card-icon { background: color-mix(in srgb, var(--primary) 15%, rgba(255, 255, 255, .02)); color: #7ee29a; }
+	:root.dark .hub-card p { color: #9caea2; }
 	@media (max-width: 700px) { .hub-grid { grid-template-columns: 1fr; } }
 </style>

@@ -135,7 +135,7 @@ export const navBarConfig: NavBarConfig = {
 			children: [
 				{
 					name: "PortSwigger Academy Write-Ups",
-					url: "/web-application-pentesting/portswigger-academy/",
+					url: "/academy/",
 					icon: "material-symbols:school-outline",
 				},
 			],

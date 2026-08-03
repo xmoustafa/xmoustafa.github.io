@@ -1,6 +1,7 @@
 ---
+import KnowledgeHub from "@components/features/KnowledgeHub.astro";
 export function getStaticPaths() {
-	const staticTopics = {
+	const topics = {
 		"access-control": "Access Control",
 		"cross-origin-resource-sharing": "Cross-Origin Resource Sharing",
 		"cross-site-scripting": "Cross-Site Scripting (XSS)",
@@ -12,7 +13,9 @@ export function getStaticPaths() {
 		"web-cache-poisoning": "Web Cache Poisoning",
 		"xxe-injection": "XXE Injection",
 	};
-	return Object.entries(staticTopics).map(([topic, title]) => ({ params: { topic }, props: { title } }));
+	return Object.entries(topics).map(([topic, title]) => ({ params: { topic }, props: { title } }));
 }
-return Astro.redirect(`/academy/${Astro.params.topic}/`, 301);
+const { title } = Astro.props;
+const sections = [{ title: "Write-Ups", description: "New lab write-ups will appear here.", links: [] }];
 ---
+<KnowledgeHub title={title} description={`PortSwigger Academy ${title} lab notes and write-ups.`} eyebrow="PORTSWIGGER ACADEMY // TOPIC" sections={sections} share />
