@@ -1,7 +1,29 @@
 ---
 import KnowledgeHub from "@components/features/KnowledgeHub.astro";
+import { getCollection } from "astro:content";
+import { slugifyKnowledgeTitle } from "../../utils/academy";
 
-const sections: { title: string; links: { title: string; href: string }[] }[] = [];
+const articles = await getCollection("reverse", ({ data }) => !data.draft);
+const topics = new Map<string, typeof articles>();
+for (const article of articles) {
+	const entries = topics.get(article.data.topic) || [];
+	entries.push(article);
+	topics.set(article.data.topic, entries);
+}
+const sections = [...topics.entries()]
+	.sort(([a], [b]) => a.localeCompare(b))
+	.map(([topic, entries]) => ({
+		title: topic,
+		description: `${entries.length} article${entries.length === 1 ? "" : "s"}`,
+		links: entries
+			.sort((a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title))
+			.map((entry) => ({
+				title: entry.data.title,
+				href: `/reverse/${slugifyKnowledgeTitle(topic)}/${entry.id.split("/").at(-1)}/`,
+				description: entry.data.description,
+				icon: "material-symbols:memory",
+			})),
+	}));
 ---
 
 <KnowledgeHub

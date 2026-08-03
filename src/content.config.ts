@@ -55,7 +55,27 @@ const specCollection = defineCollection({
 	loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/spec" }),
 	schema: z.object({}),
 });
+const academyCollection = defineCollection({
+	loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/academy" }),
+	schema: z.object({
+		title: z.string().optional(),
+		description: z.string().optional().default(""),
+		draft: z.boolean().optional().default(false),
+	}),
+});
+const reverseCollection = defineCollection({
+	loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/reverse" }),
+	schema: z.object({
+		title: z.string(),
+		description: z.string().optional().default(""),
+		topic: z.string(),
+		order: z.number().optional().default(0),
+		draft: z.boolean().optional().default(false),
+	}),
+});
 export const collections = {
 	posts: postsCollection,
 	spec: specCollection,
+	academy: academyCollection,
+	reverse: reverseCollection,
 };
