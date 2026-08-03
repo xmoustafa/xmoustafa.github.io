@@ -1,0 +1,78 @@
+---
+import ShareCard from "@components/features/posts/ShareCard.astro";
+import MainGridLayout from "@layouts/MainGridLayout.astro";
+import { profileConfig, shareConfig, siteConfig } from "../../../config";
+import catalog from "../../../data/portswigger-labs.json";
+import { getAcademyLabSlug } from "../../../utils/academy";
+import { marked } from "marked";
+import sanitizeHtml from "sanitize-html";
+
+interface AcademyLab {
+	title: string;
+	url: string;
+	writeup?: string;
+}
+
+export function getStaticPaths() {
+	return catalog.flatMap((group) =>
+		group.topics.flatMap((topic) =>
+			topic.labs.map((lab) => ({
+				params: { topic: topic.slug, lab: getAcademyLabSlug(lab.title) },
+				props: { topic, lab, groupName: group.name },
+			})),
+		),
+	);
+}
+
+const { topic, lab: rawLab, groupName } = Astro.props;
+const lab = rawLab as AcademyLab;
+const writeup = lab.writeup?.trim() || "";
+const writeupHtml = writeup
+	? sanitizeHtml(marked.parse(writeup) as string, {
+		allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img", "h1", "h2"]),
+		allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, img: ["src", "alt", "title", "loading"] },
+	})
+	: "";
+const description = `${topic.title} lab write-up.`;
+---
+
+<MainGridLayout title={lab.title} description={description}>
+	<article class="academy-writeup card-base p-6 md:p-9">
+		<header>
+			<a href={`/academy/${topic.slug}/`}>&larr; {topic.title}</a>
+			<span>{groupName} // {topic.title}</span>
+			<h1>{lab.title}</h1>
+		</header>
+
+		<section class="writeup-content" aria-label="Lab write-up">
+			{writeup && <div class="prose" set:html={writeupHtml} />}
+		</section>
+
+		{shareConfig.enable && (
+			<ShareCard
+				title={lab.title}
+				description={description}
+				pubDate="2026-08-03"
+				url={Astro.url.toString()}
+				siteTitle={siteConfig.title}
+				avatar={profileConfig.avatar}
+				class="mt-8 mb-0"
+			/>
+		)}
+	</article>
+</MainGridLayout>
+
+<style is:global>
+	body:has(.academy-writeup) #main-grid { grid-template-columns: minmax(0, 1fr) !important; max-width: 78rem; }
+	body:has(.academy-writeup) #main-grid > .contents { display: none; }
+	body:has(.academy-writeup) #swup-container { grid-column: 1 / -1 !important; }
+	.academy-writeup { color: #17211b; border: 1px solid color-mix(in srgb, var(--primary) 38%, transparent); }
+	.academy-writeup > header { padding-left: 1.25rem; border-left: 4px solid var(--primary); }
+	.academy-writeup > header a { display: inline-block; margin-bottom: 1rem; color: var(--primary); font-weight: 700; text-decoration: none; }
+	.academy-writeup > header span { display: block; color: var(--primary); font: 700 .72rem var(--font-jetbrains-mono), monospace; letter-spacing: .12em; text-transform: uppercase; }
+	.academy-writeup > header h1 { margin: .55rem 0 0; color: #101a13; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.12; }
+	.writeup-content { min-height: 14rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid color-mix(in srgb, var(--primary) 22%, transparent); }
+	.writeup-content .prose { max-width: none; }
+	:root.dark .academy-writeup { color: #e7f4eb; background: linear-gradient(145deg, rgba(20, 31, 24, .98), rgba(12, 22, 16, .98)) !important; border-color: color-mix(in srgb, var(--primary) 45%, transparent) !important; }
+	:root.dark .academy-writeup > header h1 { color: #f1faf4; }
+</style>

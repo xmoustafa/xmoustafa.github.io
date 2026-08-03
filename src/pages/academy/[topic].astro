@@ -1,6 +1,7 @@
 ---
 import KnowledgeHub from "@components/features/KnowledgeHub.astro";
 import catalog from "../../data/portswigger-labs.json";
+import { getAcademyLabSlug } from "../../utils/academy";
 export function getStaticPaths() {
 	return catalog.flatMap((group) =>
 		group.topics.map((topic) => ({ params: { topic: topic.slug }, props: { topic, groupName: group.name } })),
@@ -9,12 +10,11 @@ export function getStaticPaths() {
 const { topic, groupName } = Astro.props;
 const sections = [{
 	title: `${topic.labs.length} Labs`,
-	description: "Open any lab on the official PortSwigger Web Security Academy.",
+	description: "Choose a lab to open its write-up on this blog.",
 	links: topic.labs.map((lab) => ({
 		title: lab.title,
-		href: lab.url,
+		href: `/academy/${topic.slug}/${getAcademyLabSlug(lab.title)}/`,
 		icon: "material-symbols:science-outline",
-		external: true,
 	})),
 }];
 ---
