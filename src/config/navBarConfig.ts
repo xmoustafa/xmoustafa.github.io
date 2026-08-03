@@ -129,6 +129,11 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Home,
 		LinkPreset.Archive,
 		{
+			name: "Reverse",
+			url: "/reverse/",
+			icon: "material-symbols:memory",
+		},
+		{
 			name: "Web Application Pentesting",
 			url: "/web-application-pentesting/",
 			icon: "material-symbols:language",

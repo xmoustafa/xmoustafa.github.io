@@ -1,0 +1,12 @@
+---
+import KnowledgeHub from "@components/features/KnowledgeHub.astro";
+
+const sections: { title: string; links: { title: string; href: string }[] }[] = [];
+---
+
+<KnowledgeHub
+	title="Reverse"
+	description="Reverse engineering notes and write-ups."
+	eyebrow="REVERSE ENGINEERING"
+	sections={sections}
+/>
