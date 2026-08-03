@@ -1,0 +1,18 @@
+---
+title: Optional custom page title
+description: Short summary of this solution
+draft: false
+---
+
+## Solution
+
+Write the lab solution here.
+
+## Steps
+
+1. Add the first step.
+2. Add the next step.
+
+## References
+
+- [Resource name](https://example.com/)

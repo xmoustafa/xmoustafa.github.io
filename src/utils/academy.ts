@@ -1,4 +1,4 @@
-export function getAcademyLabSlug(title: string): string {
+export function slugifyKnowledgeTitle(title: string): string {
 	return title
 		.normalize("NFKD")
 		.toLowerCase()
@@ -7,3 +7,5 @@ export function getAcademyLabSlug(title: string): string {
 		.replace(/[^a-z0-9]+/g, "-")
 		.replace(/^-|-$/g, "") || "lab";
 }
+
+export const getAcademyLabSlug = slugifyKnowledgeTitle;
