@@ -1,0 +1,43 @@
+---
+import KnowledgeHub from "@components/features/KnowledgeHub.astro";
+import { readdirSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+
+const certificatesDirectory = fileURLToPath(
+	new URL("../../../public/certifications/", import.meta.url),
+);
+
+const certificateFiles = readdirSync(certificatesDirectory, { withFileTypes: true })
+	.filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".pdf"))
+	.map((entry) => entry.name)
+	.sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+
+const formatCertificateName = (filename: string) =>
+	filename
+		.replace(/\.pdf$/i, "")
+		.replace(/[-_]+/g, " ")
+		.replace(/\s+/g, " ")
+		.trim()
+		.replace(/\b\w/g, (letter) => letter.toUpperCase());
+
+const sections = [{
+	title: "Certificates",
+	description: certificateFiles.length
+		? `${certificateFiles.length} certificate${certificateFiles.length === 1 ? "" : "s"} available as PDF.`
+		: "Certificates will appear here after PDF files are uploaded.",
+	links: certificateFiles.map((filename) => ({
+		title: formatCertificateName(filename),
+		href: `/certifications/${encodeURIComponent(filename)}`,
+		description: "Open certificate PDF",
+		icon: "material-symbols:picture-as-pdf",
+		external: true,
+	})),
+}];
+---
+
+<KnowledgeHub
+	title="Certifications"
+	description="Professional certifications and credentials."
+	eyebrow="CERTIFICATES // PDF LIBRARY"
+	sections={sections}
+/>

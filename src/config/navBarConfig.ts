@@ -134,6 +134,11 @@ export const navBarConfig: NavBarConfig = {
 			icon: "material-symbols:memory",
 		},
 		{
+			name: "Certifications",
+			url: "/certifications/",
+			icon: "material-symbols:workspace-premium",
+		},
+		{
 			name: "Web Application Pentesting",
 			url: "/web-application-pentesting/",
 			icon: "material-symbols:language",
