@@ -27,14 +27,6 @@ The Reverse index automatically creates the topic group and article card. The ar
 
 Set `draft: true` to keep an Academy write-up or Reverse article out of the production website. Change it to `false` when it is ready.
 
-## Add a certificate
-
-1. Copy the certificate PDF into `public/certifications/`.
-2. Give it a readable filename, such as `oscp-certificate.pdf`.
-3. Rebuild and deploy the website.
-
-The Certifications page lists the PDF automatically. Its filename becomes the certificate title, and clicking its card opens the PDF in a new browser tab.
-
 ## Markdown features
 
 Use headings, lists, tables, links, images, blockquotes, and fenced code blocks. The existing website theme formats them automatically in light and dark modes.
