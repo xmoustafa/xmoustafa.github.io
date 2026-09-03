@@ -6,86 +6,37 @@ const skillGroups = [
 	{
 		title: "Web & API Security",
 		items: [
-			"OWASP Top 10",
-			"Access Control Testing",
-			"Authentication Testing",
-			"XSS & Blind XSS",
+			"Web & API Penetration Testing",
+			"Access Control & Authentication",
 			"Business Logic Testing",
-			"Rate Limiting",
-			"Input Validation",
-			"API Security",
-		],
-	},
-	{
-		title: "Offensive Tooling",
-		items: [
 			"Burp Suite Professional",
-			"Nmap",
-			"Nessus",
-			"Metasploit",
-			"SQLMap",
-			"OWASP ZAP",
-			"Nuclei",
-			"ffuf",
-			"dirsearch",
-			"Amass",
-			"Subfinder",
-			"httpx",
-			"Katana",
 		],
 	},
 	{
 		title: "Reverse Engineering",
 		items: [
-			"IDA Pro",
-			"Ghidra",
-			"Binary Ninja",
+			"IDA Pro & Ghidra",
 			"x64dbg",
-			"PEStudio",
-			"PE-bear",
-			"Detect It Easy",
-			"Static Analysis",
-			"Dynamic Analysis",
-			"Control-Flow Analysis",
-		],
-	},
-	{
-		title: "Malware Analysis",
-		items: [
-			"ProcMon",
-			"Process Hacker",
-			"API Monitor",
-			"Wireshark",
-			"String Analysis",
-			"Import Analysis",
-			"Behavior Analysis",
-			"IOC Extraction",
-			"Basic YARA Rules",
-		],
-	},
-	{
-		title: "Programming & Scripting",
-		items: [
-			"Python",
-			"Bash",
-			"PowerShell",
-			"C++",
-			"JavaScript",
-			"PHP",
+			"Static & Dynamic Analysis",
 			"x86/x64 Assembly",
 		],
 	},
 	{
-		title: "Systems & Networking",
+		title: "Malware & SOC Analysis",
 		items: [
-			"Windows",
-			"Linux",
-			"macOS",
-			"TCP/IP",
-			"DNS",
-			"HTTP/HTTPS",
-			"VPN",
-			"Active Directory Fundamentals",
+			"Behavior Analysis",
+			"IOC Extraction",
+			"Wireshark & ProcMon",
+			"Incident Investigation",
+		],
+	},
+	{
+		title: "Programming & Systems",
+		items: [
+			"Python & PowerShell",
+			"C++",
+			"Windows & Linux",
+			"TCP/IP & HTTP",
 		],
 	},
 ];
@@ -94,7 +45,6 @@ const socialLinks = [
 	{ label: "X / Twitter", href: "https://x.com/Prosox0x0", icon: "fa7-brands:x-twitter" },
 	{ label: "LinkedIn", href: "https://linkedin.com/in/moustafa-abdelnabbi", icon: "fa7-brands:linkedin-in" },
 	{ label: "My Blog", href: "https://xmoustafa.github.io/", icon: "fa7-solid:globe" },
-	{ label: "Facebook", href: "https://facebook.com/Moustafa.0x1337", icon: "fa7-brands:facebook-f" },
 	{ label: "Email", href: "mailto:moustafa.abdelnaby@outlook.com", icon: "fa7-solid:envelope" },
 	{ label: "Discord", href: "https://discord.com/users/1p_rootx", icon: "fa7-brands:discord" },
 ];
@@ -102,7 +52,7 @@ const socialLinks = [
 
 <MainGridLayout
 	title="About"
-	description="Penetration Tester and Security Researcher with more than seven years of independent application-security experience."
+	description="Penetration Tester and Security Researcher focused on practical application security and technical investigation."
 >
 	<section class="about-brand-page card-base p-5 md:p-8">
 		<header class="about-page-header">
@@ -118,7 +68,6 @@ const socialLinks = [
 				</div>
 				<p class="identity-handle">PROSOX</p>
 				<h2>Penetration Tester<br />& Security Researcher</h2>
-				<div class="experience-badge">7+ YEARS · INDEPENDENT EXPERIENCE</div>
 
 				<nav class="identity-links" aria-label="Prosox0x0 social links">
 					{
@@ -137,17 +86,9 @@ const socialLinks = [
 					<p class="panel-index">01 // PROFILE</p>
 					<h2>Penetration Tester & Security Researcher</h2>
 					<p>
-						I bring more than seven years of independent bug bounty and
-						application-security experience, supported by hands-on exposure to
-						reverse engineering, malware analysis, and SOC investigations.
-					</p>
-					<p>
-						My work spans web and API testing, OWASP Top 10 vulnerabilities,
-						Burp Suite Professional, proof-of-concept development, technical
-						reporting, Windows binary analysis, and x86/x64 debugging. I focus on
-						identifying meaningful vulnerabilities, understanding attacker
-						techniques, and translating technical findings into clear,
-						actionable remediation guidance.
+						I focus on web and API security, reverse engineering, and malware
+						analysis—turning practical testing into clear findings and actionable
+						remediation.
 					</p>
 				</article>
 
@@ -311,17 +252,6 @@ const socialLinks = [
 		line-height: 1.65;
 		letter-spacing: 0.09em;
 		text-transform: uppercase;
-	}
-
-	.experience-badge {
-		margin: 1rem 0;
-		padding: 0.6rem 0.75rem;
-		border: 1px solid color-mix(in srgb, var(--primary) 28%, transparent);
-		border-radius: 0.65rem;
-		color: var(--primary);
-		font-family: var(--font-jetbrains-mono), monospace;
-		font-size: 0.68rem;
-		font-weight: 700;
 	}
 
 	.identity-links {

@@ -26,11 +26,6 @@ export const profileConfig: ProfileConfig = {
 			url: "https://xmoustafa.github.io/",
 		},
 		{
-			name: "Facebook",
-			icon: "fa7-brands:facebook-f",
-			url: "https://facebook.com/Moustafa.0x1337",
-		},
-		{
 			name: "Email",
 			icon: "fa7-solid:envelope",
 			url: "mailto:moustafa.abdelnaby@outlook.com",
